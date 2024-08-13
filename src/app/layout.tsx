@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/common/header/Header';
+import Background from '@/components/common/background/Background';
 import { getData } from '@/lib/getData';
 
 const pretendard = localFont({
@@ -26,12 +27,19 @@ export default function RootLayout({
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
-        <Header />
-        {children}
-        <footer className="absolute bottom-4 right-4 text-sm text-white">
-          Built at: {buildTime}
-        </footer>
+        <div className="relative min-h-screen">
+          <Background />
+          <div className="relative z-10">
+            <Header />
+            <main>{children}</main>
+            <footer className="absolute bottom-4 right-4 text-sm text-white">
+              Built at: {buildTime}
+            </footer>
+          </div>
+        </div>
       </body>
     </html>
   );
 }
+
+export const dynamic = 'force-static';

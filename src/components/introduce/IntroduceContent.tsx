@@ -3,7 +3,7 @@ import Counter from './Counter';
 
 const IntroduceContent = () => {
   return (
-    <div className="min-h-screen w-full flex justify-center bg-black text-white p-4 sm:p-8">
+    <div className="min-h-screen w-full flex justify-center bg-transparent text-white p-4 sm:p-8">
       <div className="w-full max-w-4xl flex flex-col justify-center items-center">
         <div className="flex flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 space-y-6 sm:space-y-0 sm:space-x-12">
           <div className="flex flex-col items-center">
