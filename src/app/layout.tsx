@@ -26,17 +26,12 @@ export default function RootLayout({
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
-        <body className={pretendard.className}>
-          <Header />
-          {children}
-          <footer className="absolute bottom-4 right-4 text-sm text-white">
-            Built at: {buildTime}
-          </footer>
-        </body>
+        <Header />
+        {children}
+        <footer className="absolute bottom-4 right-4 text-sm text-white">
+          Built at: {buildTime}
+        </footer>
       </body>
     </html>
   );
 }
-
-// SSG 구현
-export const dynamic = 'force-static';

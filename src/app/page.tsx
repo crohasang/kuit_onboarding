@@ -1,12 +1,5 @@
-import HomeContent from '@/components/home/HomeContent';
+import MainContent from '@/components/MainContent';
 
 export default function Home() {
-  return (
-    <div className="h-screen w-screen">
-      <HomeContent />
-    </div>
-  );
+  return <MainContent />;
 }
-
-// SSG
-export const dynamic = 'force-static';
