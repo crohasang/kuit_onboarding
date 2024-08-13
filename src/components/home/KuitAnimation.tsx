@@ -46,9 +46,9 @@ const KuitAnimation = () => {
   };
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center">
+    <div className="h-full w-full  flex flex-col items-center justify-center">
       <motion.div
-        className="text-6xl font-bold text-white flex items-center space-x-4"
+        className="text-4xl font-bold text-white flex items-center space-x-2"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -56,7 +56,7 @@ const KuitAnimation = () => {
         <motion.span
           className="text-kuit"
           variants={itemVariants}
-          animate={step === 2 ? { x: 'calc(+100% + 3rem)' } : { x: 0 }}
+          animate={step === 2 ? { x: 'calc(+105% + 1rem)' } : { x: 0 }}
           transition={{ duration: 0.5 }}
         >
           KU
@@ -81,7 +81,7 @@ const KuitAnimation = () => {
         <motion.span
           className="text-kuit"
           variants={itemVariants}
-          animate={step === 2 ? { x: 'calc(-100% - 5rem)' } : { x: 0 }}
+          animate={step === 2 ? { x: 'calc(-110% - 3rem)' } : { x: 0 }}
           transition={{ duration: 0.5 }}
         >
           IT
@@ -89,7 +89,7 @@ const KuitAnimation = () => {
       </motion.div>
 
       <motion.div
-        className="mt-4 text-white text-2xl font-semibold text-center"
+        className="mt-4 text-white text-xl font-semibold text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={showDescription ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
