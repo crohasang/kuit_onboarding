@@ -33,7 +33,7 @@ export default function RootLayout({
             <Header />
             <main>{children}</main>
             <footer className="absolute bottom-4 right-4 text-sm text-white">
-              Built at: {buildTime}
+              최종 업데이트: {buildTime}
             </footer>
           </div>
         </div>
