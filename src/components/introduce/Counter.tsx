@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-// Easing function type
 type EasingFunction = (t: number) => number;
 
-// Easing function implementation
 const easeOutQuad: EasingFunction = (t) => t * (2 - t);
 
-// Props interface
 interface CounterProps {
   end?: number;
   duration?: number;
@@ -24,7 +21,6 @@ const Counter: React.FC<CounterProps> = ({ end = 100, duration = 2000 }) => {
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
 
-      // Apply easing function
       const easedPercentage = easeOutQuad(percentage);
       const currentCount = Math.floor(easedPercentage * end);
 
