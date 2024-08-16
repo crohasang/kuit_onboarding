@@ -162,15 +162,19 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute bottom-4 left-4 text-white text-sm">
+      <div
+        className={`fixed bottom-4 left-4 text-white ${
+          isMobile ? 'text-xs' : 'text-sm'
+        } z-50`}
+      >
         {currentPage + 1}/{totalPages}
       </div>
 
       {showChevron && currentPage === 0 && (
         <div
-          className={`absolute left-1/2 transform -translate-x-1/2 ${
+          className={`fixed left-1/2 transform -translate-x-1/2 ${
             isMobile ? 'bottom-4' : 'bottom-6'
-          }`}
+          } z-50`}
         >
           <IoChevronDownOutline
             className={`text-white ${isMobile ? 'text-xl' : 'text-2xl'}`}
@@ -183,9 +187,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 
       {showChevron && currentPage === totalPages - 1 && (
         <div
-          className={`absolute left-1/2 transform -translate-x-1/2 ${
+          className={`fixed left-1/2 transform -translate-x-1/2 ${
             isMobile ? 'top-4' : 'top-6'
-          }`}
+          } z-50`}
         >
           <IoChevronUpOutline
             className={`text-white ${isMobile ? 'text-xl' : 'text-2xl'}`}
