@@ -32,7 +32,7 @@ export default function RootLayout({
           <div className="relative z-10">
             <Header />
             <main>{children}</main>
-            <footer className="absolute bottom-4 right-4 text-sm text-white">
+            <footer className="fixed bottom-2 right-4 text-xs text-white z-50">
               최종 업데이트: {buildTime}
             </footer>
           </div>
