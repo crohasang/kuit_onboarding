@@ -23,7 +23,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { buildTime } = getData();
-
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
@@ -32,9 +31,9 @@ export default function RootLayout({
           <div className="relative z-10">
             <Header />
             <main>{children}</main>
-            <footer className="fixed bottom-2 right-4 text-xs text-white z-50">
+            <div className="fixed bottom-4 right-4 text-white text-xs sm:text-sm z-50">
               최종 업데이트: {buildTime}
-            </footer>
+            </div>
           </div>
         </div>
       </body>
