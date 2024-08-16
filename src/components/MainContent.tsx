@@ -5,6 +5,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import HomeContent from '@/components/home/HomeContent';
 import IntroduceContent from '@/components/introduce/IntroduceContent';
 import StudyContent from './study/StudyContent';
+import ProjectsContent from './projects/ProjectsContent';
 
 const MainContent = () => {
   // 현재 페이지 상태 관리
@@ -37,6 +38,7 @@ const MainContent = () => {
       <HomeContent />
       <IntroduceContent />
       <StudyContent />
+      <ProjectsContent />
     </PageLayout>
   );
 };
