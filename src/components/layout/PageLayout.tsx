@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
 
 interface PageLayoutProps {
   children: React.ReactNode[];
@@ -20,31 +21,42 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   const [direction, setDirection] = useState<'up' | 'down'>('down');
   const lastEventTime = useRef(0);
   const touchStartY = useRef(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const totalPages = React.Children.count(children);
+  const [showChevron, setShowChevron] = useState(true);
 
-  // 페이지 전환  함수
+  // 모바일인지 확인
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // 페이지 전환 함수
   const handlePageTransition = useCallback(
     (newDirection: 'up' | 'down') => {
-      if (isAnimating) return; // 애니메이션 중이면 무시
+      if (isAnimating) return;
       const now = Date.now();
-      if (now - lastEventTime.current < 1000) return; // 1초 내 중복 이벤트 방지
+      if (now - lastEventTime.current < 1000) return;
       lastEventTime.current = now;
 
       let nextPage: number;
       if (newDirection === 'down') {
-        nextPage = Math.min(
-          React.Children.count(children) - 1,
-          currentPage + 1
-        );
+        nextPage = Math.min(totalPages - 1, currentPage + 1);
       } else {
         nextPage = Math.max(0, currentPage - 1);
       }
 
       if (nextPage !== currentPage) {
         setDirection(newDirection);
+        setShowChevron(false);
         onPageChange(nextPage);
       }
     },
-    [children, currentPage, onPageChange, isAnimating]
+    [totalPages, currentPage, onPageChange, isAnimating]
   );
 
   // 마우스 휠 이벤트 핸들러
@@ -120,6 +132,11 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     duration: 0.8,
   };
 
+  const handleAnimationComplete = () => {
+    setShowChevron(true);
+    onAnimationComplete();
+  };
+
   return (
     <div
       ref={containerRef}
@@ -129,7 +146,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         initial={false}
         custom={direction}
         mode="sync"
-        onExitComplete={onAnimationComplete}
+        onExitComplete={handleAnimationComplete}
       >
         <motion.div
           key={currentPage}
@@ -144,6 +161,40 @@ const PageLayout: React.FC<PageLayoutProps> = ({
           {children[currentPage]}
         </motion.div>
       </AnimatePresence>
+
+      <div className="absolute bottom-4 left-4 text-white text-sm">
+        {currentPage + 1}/{totalPages}
+      </div>
+
+      {showChevron && currentPage === 0 && (
+        <div
+          className={`absolute left-1/2 transform -translate-x-1/2 ${
+            isMobile ? 'bottom-4' : 'bottom-6'
+          }`}
+        >
+          <IoChevronDownOutline
+            className={`text-white ${isMobile ? 'text-xl' : 'text-2xl'}`}
+          />
+          <IoChevronDownOutline
+            className={`text-white -mt-3 ${isMobile ? 'text-xl' : 'text-2xl'}`}
+          />
+        </div>
+      )}
+
+      {showChevron && currentPage === totalPages - 1 && (
+        <div
+          className={`absolute left-1/2 transform -translate-x-1/2 ${
+            isMobile ? 'top-4' : 'top-6'
+          }`}
+        >
+          <IoChevronUpOutline
+            className={`text-white ${isMobile ? 'text-xl' : 'text-2xl'}`}
+          />
+          <IoChevronUpOutline
+            className={`text-white -mt-3 ${isMobile ? 'text-xl' : 'text-2xl'}`}
+          />
+        </div>
+      )}
     </div>
   );
 };
