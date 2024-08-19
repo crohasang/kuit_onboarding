@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
@@ -10,13 +12,13 @@ interface PageLayoutProps {
   isAnimating: boolean;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({
+const PageLayout = ({
   children,
   currentPage,
   onPageChange,
   onAnimationComplete,
   isAnimating,
-}) => {
+}: PageLayoutProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [direction, setDirection] = useState<'up' | 'down'>('down');
   const lastEventTime = useRef(0);
@@ -24,6 +26,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const totalPages = React.Children.count(children);
   const [showChevron, setShowChevron] = useState(true);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   // 모바일인지 확인
   useEffect(() => {
@@ -40,7 +43,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     (newDirection: 'up' | 'down') => {
       if (isAnimating) return;
       const now = Date.now();
-      if (now - lastEventTime.current < 1000) return;
+      if (now - lastEventTime.current < 300) return;
       lastEventTime.current = now;
 
       let nextPage: number;
@@ -59,12 +62,19 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     [totalPages, currentPage, onPageChange, isAnimating]
   );
 
-  // 마우스 휠 이벤트 핸들러
-  const handleWheel = useCallback(
+  // 스크롤 이벤트 핸들러
+  const handleScroll = useCallback(
     (event: WheelEvent) => {
       event.preventDefault();
-      const newDirection = event.deltaY > 0 ? 'down' : 'up';
-      handlePageTransition(newDirection);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      scrollTimeout.current = setTimeout(() => {
+        const newDirection = event.deltaY > 0 ? 'down' : 'up';
+        handlePageTransition(newDirection);
+      }, 50); // 50ms 딜레이로 스크롤 이벤트 디바운싱
     },
     [handlePageTransition]
   );
@@ -74,16 +84,19 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     touchStartY.current = event.touches[0].clientY;
   }, []);
 
-  // 터치 종료 이벤트 핸들러
-  const handleTouchEnd = useCallback(
+  // 터치 이동 이벤트 핸들러
+  const handleTouchMove = useCallback(
     (event: TouchEvent) => {
-      const touchEndY = event.changedTouches[0].clientY;
-      const deltaY = touchStartY.current - touchEndY;
+      const touchCurrentY = event.touches[0].clientY;
+      const deltaY = touchStartY.current - touchCurrentY;
 
-      if (Math.abs(deltaY) > 50) {
-        // 최소 스와이프 거리
+      // 최소 스와이프 거리를 화면 높이의 5%로 설정
+      const minSwipeDistance = window.innerHeight * 0.05;
+
+      if (Math.abs(deltaY) > minSwipeDistance) {
         const newDirection = deltaY > 0 ? 'down' : 'up';
         handlePageTransition(newDirection);
+        touchStartY.current = touchCurrentY; // 터치 시작 위치 재설정
       }
     },
     [handlePageTransition]
@@ -93,21 +106,23 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      container.addEventListener('wheel', handleWheel, { passive: false });
+      container.addEventListener('wheel', handleScroll, { passive: false });
       container.addEventListener('touchstart', handleTouchStart, {
         passive: true,
       });
-      container.addEventListener('touchend', handleTouchEnd, { passive: true });
+      container.addEventListener('touchmove', handleTouchMove, {
+        passive: false,
+      });
     }
 
     return () => {
       if (container) {
-        container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('wheel', handleScroll);
         container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchend', handleTouchEnd);
+        container.removeEventListener('touchmove', handleTouchMove);
       }
     };
-  }, [handleWheel, handleTouchStart, handleTouchEnd]);
+  }, [handleScroll, handleTouchStart, handleTouchMove]);
 
   // 페이지 전환 애니메이션 variants
   const pageVariants = {
