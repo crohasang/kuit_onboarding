@@ -3,7 +3,6 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/common/header/Header';
 import Background from '@/components/common/background/Background';
-import { getData } from '@/lib/getData';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -22,7 +21,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { buildTime } = getData();
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
@@ -31,9 +29,6 @@ export default function RootLayout({
           <div className="relative z-10">
             <Header />
             <main>{children}</main>
-            <div className="fixed bottom-4 right-4 text-white text-xs sm:text-sm z-50">
-              최종 업데이트: {buildTime}
-            </div>
           </div>
         </div>
       </body>
