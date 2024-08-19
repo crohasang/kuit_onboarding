@@ -6,6 +6,7 @@ import HomeContent from '@/components/home/HomeContent';
 import IntroduceContent from '@/components/introduce/IntroduceContent';
 import StudyContent from './study/StudyContent';
 import ProjectsContent from './projects/ProjectsContent';
+import StaffContent from './staff/StaffContent';
 
 const MainContent = () => {
   // 현재 페이지 상태 관리
@@ -39,6 +40,7 @@ const MainContent = () => {
       <IntroduceContent />
       <StudyContent />
       <ProjectsContent />
+      <StaffContent />
     </PageLayout>
   );
 };
