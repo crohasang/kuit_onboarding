@@ -5,4 +5,4 @@
 2024.08 ~ (개발 중)
 
 # 📌 개발 방법
-Next.js 14 (SSG) + TypeScript + tailwind css + Strapi(Headless CMS)
+Next.js 14 (SSG) + TypeScript + tailwind css
