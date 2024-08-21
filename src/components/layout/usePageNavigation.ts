@@ -10,15 +10,15 @@ export const usePageNavigation = (
   const lastEventTime = useRef(0);
   const touchStartY = useRef(0);
   const touchStartX = useRef(0);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const lastScrollTime = useRef(0);
   const accumulatedDelta = useRef(0);
+  const isTransitioning = useRef(false);
 
-  // 페이지 전환을 처리하는 함수
   const handlePageTransition = useCallback(
     (newDirection: 'up' | 'down') => {
-      if (isAnimating) return; // 애니메이션 중이면 페이지 전환 무시
+      if (isAnimating || isTransitioning.current) return;
       const now = Date.now();
-      if (now - lastEventTime.current < 300) return; // 연속된 이벤트 방지
+      if (now - lastEventTime.current < 500) return; // Increased debounce time
       lastEventTime.current = now;
 
       let nextPage: number;
@@ -29,56 +29,56 @@ export const usePageNavigation = (
       }
 
       if (nextPage !== currentPage) {
+        isTransitioning.current = true;
         setDirection(newDirection);
         setCurrentPage(nextPage);
         onPageChange(nextPage);
+
+        // Reset transition state after animation
+        setTimeout(() => {
+          isTransitioning.current = false;
+        }, 1000); // Adjust this value to match your transition duration
       }
     },
     [totalPages, currentPage, onPageChange, isAnimating]
   );
 
-  // 스크롤 이벤트를 처리하는 함수
   const handleScroll = useCallback(
     (event: WheelEvent) => {
       event.preventDefault();
 
+      const now = Date.now();
       const isStaffPage = currentPage === totalPages - 1;
       const staffContainer = document.querySelector('.staff-grid-container');
 
       if (isStaffPage && staffContainer) {
-        // 운영진 페이지에서의 수평 스크롤 처리
         staffContainer.scrollLeft += event.deltaY;
-
-        // 페이지 전환을 위한 누적 델타 계산
         accumulatedDelta.current += Math.abs(event.deltaY);
 
-        // 누적 델타가 충분히 크면 페이지 전환 고려
         if (accumulatedDelta.current > window.innerHeight * 0.5) {
+          // Increased threshold
           const newDirection = event.deltaY > 0 ? 'down' : 'up';
           handlePageTransition(newDirection);
           accumulatedDelta.current = 0;
         }
       } else {
-        // 다른 페이지에서의 일반 스크롤 처리
-        if (scrollTimeout.current) {
-          clearTimeout(scrollTimeout.current);
-        }
-        scrollTimeout.current = setTimeout(() => {
+        const timeSinceLastScroll = now - lastScrollTime.current;
+        if (timeSinceLastScroll > 500 && Math.abs(event.deltaY) > 50) {
+          // Increased delay and added threshold
           const newDirection = event.deltaY > 0 ? 'down' : 'up';
           handlePageTransition(newDirection);
-        }, 50);
+          lastScrollTime.current = now;
+        }
       }
     },
     [handlePageTransition, currentPage, totalPages]
   );
 
-  // 터치 시작 이벤트를 처리하는 함수
   const handleTouchStart = useCallback((event: TouchEvent) => {
     touchStartY.current = event.touches[0].clientY;
     touchStartX.current = event.touches[0].clientX;
   }, []);
 
-  // 터치 이동 이벤트를 처리하는 함수
   const handleTouchMove = useCallback(
     (event: TouchEvent) => {
       const touchCurrentY = event.touches[0].clientY;
@@ -87,20 +87,24 @@ export const usePageNavigation = (
       const deltaX = touchStartX.current - touchCurrentX;
 
       const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
-      const minSwipeDistance = window.innerHeight * 0.08;
+      const minSwipeDistance = window.innerHeight * 0.15; // Increased swipe distance
 
-      if (isHorizontalSwipe) {
-        event.preventDefault(); // 수평 스와이프 시 기본 동작 방지
-      } else {
-        if (Math.abs(deltaY) > minSwipeDistance) {
-          // 수직 스와이프가 일정 거리 이상일 때 페이지 전환
-          const newDirection = deltaY > 0 ? 'down' : 'up';
-          handlePageTransition(newDirection);
-          touchStartY.current = touchCurrentY;
-        }
+      const isStaffPage = currentPage === totalPages - 1;
+      const staffContainer = document.querySelector('.staff-grid-container');
+
+      if (isStaffPage && staffContainer && isHorizontalSwipe) {
+        staffContainer.scrollLeft += deltaX;
+      } else if (!isHorizontalSwipe && Math.abs(deltaY) > minSwipeDistance) {
+        const newDirection = deltaY > 0 ? 'down' : 'up';
+        handlePageTransition(newDirection);
+        touchStartY.current = touchCurrentY;
+      }
+
+      if (!isHorizontalSwipe) {
+        event.preventDefault();
       }
     },
-    [handlePageTransition]
+    [handlePageTransition, currentPage, totalPages]
   );
 
   return {

@@ -77,7 +77,7 @@ export const PageLayout = ({
   return (
     <div
       ref={containerRef}
-      className="h-screen overflow-hidden relative bg-black touch-none"
+      className="h-screen overflow-hidden relative bg-black"
     >
       <PageTransition
         currentPage={currentPage}
