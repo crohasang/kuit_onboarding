@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import StaffCard from './StaffCard';
 import { StaffMember } from '@/constants/staffConstants';
 
@@ -37,11 +37,12 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: '#4FE570 #1a1a1a',
+          WebkitOverflowScrolling: 'touch',
         }}
       >
-        <div className="flex flex-nowrap justify-start sm:justify-center gap-6 px-4 min-w-max">
+        <div className="flex flex-nowrap justify-start sm:justify-center gap-6 px-4 pb-4 min-w-max">
           {staff.map((member) => (
-            <div key={member.name}>
+            <div key={member.name} className="flex-shrink-0">
               <StaffCard member={member} />
             </div>
           ))}
