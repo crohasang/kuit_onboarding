@@ -89,18 +89,22 @@ export const usePageNavigation = (
       const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
       const minSwipeDistance = window.innerHeight * 0.08;
 
-      if (isHorizontalSwipe) {
-        event.preventDefault(); // 수평 스와이프 시 기본 동작 방지
-      } else {
-        if (Math.abs(deltaY) > minSwipeDistance) {
-          // 수직 스와이프가 일정 거리 이상일 때 페이지 전환
-          const newDirection = deltaY > 0 ? 'down' : 'up';
-          handlePageTransition(newDirection);
-          touchStartY.current = touchCurrentY;
-        }
+      const isStaffPage = currentPage === totalPages - 1;
+      const staffContainer = document.querySelector('.staff-grid-container');
+
+      if (isStaffPage && staffContainer && isHorizontalSwipe) {
+        staffContainer.scrollLeft += deltaX;
+      } else if (!isHorizontalSwipe && Math.abs(deltaY) > minSwipeDistance) {
+        const newDirection = deltaY > 0 ? 'down' : 'up';
+        handlePageTransition(newDirection);
+        touchStartY.current = touchCurrentY;
+      }
+
+      if (!isHorizontalSwipe) {
+        event.preventDefault();
       }
     },
-    [handlePageTransition]
+    [handlePageTransition, currentPage, totalPages]
   );
 
   return {
