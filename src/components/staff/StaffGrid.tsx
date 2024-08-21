@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import StaffCard from './StaffCard';
 import { StaffMember } from '@/constants/staffConstants';
 
@@ -33,7 +33,7 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
     <div className="w-full overflow-hidden">
       <div
         ref={scrollContainerRef}
-        className="max-w-full overflow-x-auto custom-scrollbar overflow-y-hidden"
+        className="max-w-full overflow-x-auto custom-scrollbar overflow-y-hidden staff-grid-container"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: '#4FE570 #1a1a1a',
