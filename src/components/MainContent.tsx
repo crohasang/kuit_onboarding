@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import PageLayout from '@/components/layout/PageLayout';
+import { PageLayout } from './layout/PageLayout';
 import HomeContent from '@/components/home/HomeContent';
 import IntroduceContent from '@/components/introduce/IntroduceContent';
 import StudyContent from './study/StudyContent';
