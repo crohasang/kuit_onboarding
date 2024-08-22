@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import StaffCard from './StaffCard';
 import { StaffMember } from '@/constants/staffConstants';
 
@@ -10,22 +10,35 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (scrollContainerRef.current) {
-        e.preventDefault();
-        scrollContainerRef.current.scrollLeft += e.deltaY;
-      }
+    const currentRef = scrollContainerRef.current;
+    if (!currentRef) return;
+
+    let startX: number;
+    let scrollLeft: number;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].pageX - currentRef.offsetLeft;
+      scrollLeft = currentRef.scrollLeft;
     };
 
-    const currentRef = scrollContainerRef.current;
-    if (currentRef) {
-      currentRef.addEventListener('wheel', handleWheel, { passive: false });
-    }
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!startX) return;
+      const x = e.touches[0].pageX - currentRef.offsetLeft;
+      const walk = (x - startX) * 2;
+      currentRef.scrollLeft = scrollLeft - walk;
+      e.preventDefault();
+    };
+
+    currentRef.addEventListener('touchstart', handleTouchStart, {
+      passive: false,
+    });
+    currentRef.addEventListener('touchmove', handleTouchMove, {
+      passive: false,
+    });
 
     return () => {
-      if (currentRef) {
-        currentRef.removeEventListener('wheel', handleWheel);
-      }
+      currentRef.removeEventListener('touchstart', handleTouchStart);
+      currentRef.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
 
@@ -33,16 +46,28 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
     <div className="w-full overflow-hidden">
       <div
         ref={scrollContainerRef}
-        className="max-w-full overflow-x-auto custom-scrollbar overflow-y-hidden staff-grid-container"
+        className="max-w-full overflow-x-auto touch-pan-x custom-scrollbar"
         style={{
+          WebkitOverflowScrolling: 'touch',
           scrollbarWidth: 'thin',
           scrollbarColor: '#4FE570 #1a1a1a',
-          WebkitOverflowScrolling: 'touch',
         }}
       >
+        <style jsx>{`
+          .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a1a1a;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #4fe570;
+            border-radius: 3px;
+          }
+        `}</style>
         <div className="flex flex-nowrap justify-start sm:justify-center gap-6 px-4 pb-4 min-w-max">
           {staff.map((member) => (
-            <div key={member.name} className="flex-shrink-0">
+            <div key={member.name}>
               <StaffCard member={member} />
             </div>
           ))}
