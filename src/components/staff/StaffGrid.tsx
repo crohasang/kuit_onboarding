@@ -43,7 +43,7 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden mt-2 sm:mt-3">
       <div
         ref={scrollContainerRef}
         className="max-w-full overflow-x-auto touch-pan-x custom-scrollbar"
@@ -55,19 +55,19 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
       >
         <style jsx>{`
           .custom-scrollbar::-webkit-scrollbar {
-            height: 6px;
+            height: 4px;
           }
           .custom-scrollbar::-webkit-scrollbar-track {
             background: #1a1a1a;
           }
           .custom-scrollbar::-webkit-scrollbar-thumb {
             background-color: #4fe570;
-            border-radius: 3px;
+            border-radius: 2px;
           }
         `}</style>
-        <div className="flex flex-nowrap justify-start sm:justify-center gap-6 px-4 pb-4 min-w-max">
+        <div className="flex flex-nowrap justify-center gap-3 px-2 sm:px-3 pb-2 sm:pb-3 pt-1 sm:pt-2 min-w-max">
           {staff.map((member) => (
-            <div key={member.name}>
+            <div key={member.name} className="flex-shrink-0">
               <StaffCard member={member} />
             </div>
           ))}
