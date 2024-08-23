@@ -2,7 +2,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
-  link?: string;
+  link: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'MOCU',
     description: '모두의 모바일 쿠폰',
-    image: '/images/projects/mocu.png',
+    image: '/image/projects/mocu.png',
     link: 'https://drive.google.com/file/d/1Aolb5iy3yUKFNQR1uOp-W-PEbGpTVO59/view',
   },
   {
@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'MealPlanB',
     description: '간편하게 식단을 추천받을 수 있는 서비스',
-    image: '/image/projects/meal_plan_b.jpg',
+    image: '/image/projects/meal_plan_b.jpeg',
     link: 'https://file.notion.so/f/f/22336a57-156d-4782-96ce-a8aa486fa7b1/c47b732a-4723-46b6-b9be-7a75e80d39e3/MealPlanB.pdf?table=block&id=2e5f1254-b6ff-43b6-b26e-5f11a049433c&spaceId=22336a57-156d-4782-96ce-a8aa486fa7b1&expirationTimestamp=1724522400000&signature=Q2T3vPJfo5rPO8iqRnLLP4i0lCrdS8U1pcbnhSqf2pc&downloadName=MealPlanB.pdf',
   },
   {
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
   {
     title: '아워메뉴',
     description: '5초만에 정하는 나만의 메뉴판',
-    image: '/images/projects/ourMenu.png',
+    image: '/image/projects/ourMenu.png',
     link: 'https://github.com/OurMenu',
   },
 ];

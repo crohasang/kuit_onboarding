@@ -1,51 +1,32 @@
-// pages/projects.tsx
-
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { PROJECTS, Project } from '@/constants/projectsConstants';
+import { PROJECTS } from '@/constants/projectsConstants';
+import ProjectCard from './ProjectCard';
 
-const ProjectCard: React.FC<{
-  project: Project;
-  width: string;
-  height: string;
-}> = ({ project, width, height }) => {
-  return (
-    <div
-      className={`${width} ${height} bg-white bg-opacity-10 rounded-lg overflow-hidden flex flex-col`}
-    >
-      <div className="w-full h-3/5 bg-gray-300" />
-      <div className="p-2 h-2/5 flex flex-col justify-between">
-        <h3 className="text-xs font-bold truncate">{project.title}</h3>
-        <p className="text-xs truncate">{project.description}</p>
-      </div>
-    </div>
-  );
-};
-
-const ProjectsContent: React.FC = () => {
+const ProjectsContent = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // 프로젝트를 7개씩 나누고, 각 줄에 대해 3번 반복
+  // 프로젝트를 6개씩 나누고, 각 줄에 대해 3번 반복
   const firstRow = [
-    ...PROJECTS.slice(0, 7),
-    ...PROJECTS.slice(0, 7),
-    ...PROJECTS.slice(0, 7),
+    ...PROJECTS.slice(0, 6),
+    ...PROJECTS.slice(0, 6),
+    ...PROJECTS.slice(0, 6),
   ];
   const secondRow = [
-    ...PROJECTS.slice(7),
-    ...PROJECTS.slice(7),
-    ...PROJECTS.slice(7),
+    ...PROJECTS.slice(6),
+    ...PROJECTS.slice(6),
+    ...PROJECTS.slice(6),
   ];
 
   // 카드의 너비와 높이를 조정
   const cardWidth = 192; // 48px (w-48) * 4 = 192px
   const cardHeight = 128; // 32px (h-32) * 4 = 128px
   const gapWidth = 16; // gap-4 = 16px
-  const totalWidth = (cardWidth + gapWidth) * 7 * 3; // 7개의 카드, 3번 반복
+  const totalWidth = (cardWidth + gapWidth) * 6 * 3; // 6개의 카드, 3번 반복
 
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center bg-transparent text-white p-4 sm:p-8">
