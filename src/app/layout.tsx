@@ -27,7 +27,7 @@ export default function RootLayout({
         <div className="relative min-h-screen">
           <Background />
           <div className="relative z-10">
-            <Header />
+            {/* <Header /> */}
             <main>{children}</main>
           </div>
         </div>
