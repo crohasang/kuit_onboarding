@@ -12,14 +12,6 @@ interface PageLayoutProps {
   isAnimating: boolean;
 }
 
-interface PageLayoutProps {
-  children: React.ReactNode[];
-  currentPage: number;
-  onPageChange: (page: number) => void;
-  onAnimationComplete: () => void;
-  isAnimating: boolean;
-}
-
 export const PageLayout = ({
   children,
   onPageChange,

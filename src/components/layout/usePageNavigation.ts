@@ -11,14 +11,13 @@ export const usePageNavigation = (
   const touchStartY = useRef(0);
   const touchStartX = useRef(0);
   const lastScrollTime = useRef(0);
-  const accumulatedDelta = useRef(0);
   const isTransitioning = useRef(false);
 
   const handlePageTransition = useCallback(
     (newDirection: 'up' | 'down') => {
       if (isAnimating || isTransitioning.current) return;
       const now = Date.now();
-      if (now - lastEventTime.current < 500) return; // Increased debounce time
+      if (now - lastEventTime.current < 500) return;
       lastEventTime.current = now;
 
       let nextPage: number;
@@ -34,10 +33,9 @@ export const usePageNavigation = (
         setCurrentPage(nextPage);
         onPageChange(nextPage);
 
-        // Reset transition state after animation
         setTimeout(() => {
           isTransitioning.current = false;
-        }, 1000); // Adjust this value to match your transition duration
+        }, 1000);
       }
     },
     [totalPages, currentPage, onPageChange, isAnimating]
@@ -48,30 +46,14 @@ export const usePageNavigation = (
       event.preventDefault();
 
       const now = Date.now();
-      const isStaffPage = currentPage === totalPages - 1;
-      const staffContainer = document.querySelector('.staff-grid-container');
-
-      if (isStaffPage && staffContainer) {
-        staffContainer.scrollLeft += event.deltaY;
-        accumulatedDelta.current += Math.abs(event.deltaY);
-
-        if (accumulatedDelta.current > window.innerHeight * 0.5) {
-          // Increased threshold
-          const newDirection = event.deltaY > 0 ? 'down' : 'up';
-          handlePageTransition(newDirection);
-          accumulatedDelta.current = 0;
-        }
-      } else {
-        const timeSinceLastScroll = now - lastScrollTime.current;
-        if (timeSinceLastScroll > 500 && Math.abs(event.deltaY) > 50) {
-          // Increased delay and added threshold
-          const newDirection = event.deltaY > 0 ? 'down' : 'up';
-          handlePageTransition(newDirection);
-          lastScrollTime.current = now;
-        }
+      const timeSinceLastScroll = now - lastScrollTime.current;
+      if (timeSinceLastScroll > 500 && Math.abs(event.deltaY) > 50) {
+        const newDirection = event.deltaY > 0 ? 'down' : 'up';
+        handlePageTransition(newDirection);
+        lastScrollTime.current = now;
       }
     },
-    [handlePageTransition, currentPage, totalPages]
+    [handlePageTransition]
   );
 
   const handleTouchStart = useCallback((event: TouchEvent) => {
@@ -87,24 +69,16 @@ export const usePageNavigation = (
       const deltaX = touchStartX.current - touchCurrentX;
 
       const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
-      const minSwipeDistance = window.innerHeight * 0.15; // Increased swipe distance
+      const minSwipeDistance = window.innerHeight * 0.15;
 
-      const isStaffPage = currentPage === totalPages - 1;
-      const staffContainer = document.querySelector('.staff-grid-container');
-
-      if (isStaffPage && staffContainer && isHorizontalSwipe) {
-        staffContainer.scrollLeft += deltaX;
-      } else if (!isHorizontalSwipe && Math.abs(deltaY) > minSwipeDistance) {
+      if (!isHorizontalSwipe && Math.abs(deltaY) > minSwipeDistance) {
         const newDirection = deltaY > 0 ? 'down' : 'up';
         handlePageTransition(newDirection);
         touchStartY.current = touchCurrentY;
-      }
-
-      if (!isHorizontalSwipe) {
         event.preventDefault();
       }
     },
-    [handlePageTransition, currentPage, totalPages]
+    [handlePageTransition]
   );
 
   return {
