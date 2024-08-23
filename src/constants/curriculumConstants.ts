@@ -38,7 +38,6 @@ export const CURRICULUM: CurriculumData = {
     '인증과 인가',
     '데이터베이스와 ERD 설계',
     'JDBC로 REST API 개발, 페이징 처리',
-    'AWS',
   ],
   PM: [
     '프로젝트 개요/PM 개요',
