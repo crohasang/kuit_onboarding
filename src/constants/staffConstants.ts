@@ -72,8 +72,8 @@ const STAFF: StaffMember[] = [
     name: '조익성',
     position: 'Android',
     role: 'Android 파트장',
-    description: '',
-    imageUrl: '',
+    description: '궁금한 것 있으면\n뭐든 물어봐주세요~',
+    imageUrl: '/image/staff/jo_ikseong.png',
     githubLink: 'https://github.com/ikseong00',
   },
   {
