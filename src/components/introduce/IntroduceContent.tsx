@@ -9,7 +9,7 @@ const IntroduceContent = () => {
           <div className="flex flex-col items-center">
             <div className="text-lg sm:text-xl mb-2">진행된 프로젝트</div>
             <div className="flex items-baseline">
-              <Counter end={14} duration={2000} />
+              <Counter end={18} duration={2000} />
               <span className="text-lg sm:text-xl ml-1">개</span>
             </div>
           </div>
