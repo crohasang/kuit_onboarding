@@ -71,6 +71,10 @@ export const usePageNavigation = (
       const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
       const minSwipeDistance = window.innerHeight * 0.15;
 
+      if (!isHorizontalSwipe) {
+        event.preventDefault();
+      }
+
       if (!isHorizontalSwipe && Math.abs(deltaY) > minSwipeDistance) {
         const newDirection = deltaY > 0 ? 'down' : 'up';
         handlePageTransition(newDirection);
