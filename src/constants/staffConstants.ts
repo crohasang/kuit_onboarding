@@ -14,16 +14,17 @@ const STAFF: StaffMember[] = [
     position: '운영팀',
     role: '회장',
     description:
-      'KUIT 4기 회장을 맡은\n조하상입니다.\n\n웹 프론트엔드 개발자를\n희망하고 있습니다.\n\n잘 부탁드립니다!',
-    imageUrl: '/image/staff/hasang.JPEG',
+      '안녕하세요, KUIT 4기 회장을 맡은 조하상입니다.\n\n웹 프론트엔드 개발자를\n희망하고 있습니다.\n\n잘 부탁드립니다!',
+    imageUrl: '/image/staff/cho_hasang.jpg',
     githubLink: 'https://github.com/crohasang',
   },
   {
     name: '김민우',
     position: '운영팀',
     role: '부회장',
-    description: '',
-    imageUrl: '',
+    description:
+      '안녕하세요!\n\n쿠잇 부회장을 맡은 김민우입니다!\n\n한 학기 동안 여러분의\n든든한 운영진이 되고 \n싶습니다! 감사합니다😊',
+    imageUrl: '/image/staff/kim_minwoo.jpg',
     githubLink: 'https://github.com/kmw10693',
   },
   {
@@ -39,7 +40,7 @@ const STAFF: StaffMember[] = [
     name: '이현희',
     position: '운영팀',
     role: '관리부',
-    description: '',
+    description: '안녕하세요!\n\n관리부 이현희입니다.\n잘 부탁드립니다!',
     imageUrl: '',
     githubLink: 'https://github.com/nonaninona',
   },
@@ -55,8 +56,9 @@ const STAFF: StaffMember[] = [
     name: '김채린',
     position: '운영팀',
     role: '홍보부',
-    description: '',
-    imageUrl: '',
+    description:
+      '안녕하세요, KUIT 4기\n홍보부 김채린입니다.\n\nAndroid 개발자로서\n다양한 도전을 하고\n있습니다.\n\n잘 부탁드립니다 :)',
+    imageUrl: '/image/staff/kim_chaerin.jpg',
     githubLink: 'https://github.com/chrin05',
   },
   // Android
@@ -73,7 +75,7 @@ const STAFF: StaffMember[] = [
     position: 'Android',
     role: 'Android 파트장',
     description: '궁금한 것 있으면\n뭐든 물어봐주세요~',
-    imageUrl: '/image/staff/jo_ikseong.png',
+    imageUrl: '/image/staff/jo_ikseong.jpg',
     githubLink: 'https://github.com/ikseong00',
   },
   {
@@ -97,8 +99,9 @@ const STAFF: StaffMember[] = [
     name: '전진호',
     position: 'Web',
     role: 'Web 파트장',
-    description: '',
-    imageUrl: '',
+    description:
+      '안녕하세요,\n\n토스코어 프론트엔드\n개발자 전진호입니다.\n\n잘 부탁드려요 🙏',
+    imageUrl: '/image/staff/jeon_jinho.jpg',
     githubLink: 'https://github.com/jinho1011',
   },
   {
@@ -122,7 +125,8 @@ const STAFF: StaffMember[] = [
     name: '이영선',
     position: 'Server',
     role: 'Server 파트장',
-    description: '',
+    description:
+      '안녕하세요, KUIT 4기\n서버 파트장 이영선입니다.\n\n잘 부탁드립니다!',
     imageUrl: '/image/staff/lee_youngsun.jpg',
     githubLink: 'https://github.com/lyouxsun',
   },
@@ -130,8 +134,9 @@ const STAFF: StaffMember[] = [
     name: '함형주',
     position: 'Server',
     role: 'Server 파트장',
-    description: '',
-    imageUrl: '',
+    description:
+      '안녕하세요! KUIT 4기\n서버 파트장 함형주입니다.\n\n잘 부탁드립니다!',
+    imageUrl: '/image/staff/ham_hyeongju.jpg',
     githubLink: 'https://github.com/hamhyeongju',
   },
   // PM
@@ -148,7 +153,8 @@ const STAFF: StaffMember[] = [
     name: '이지유',
     position: 'PM',
     role: 'PM 파트장',
-    description: '',
+    description:
+      '안녕하세요! KUIT 4기\nPM 파트장 이지유입니다.\n\n잘 부탁드립니다!',
     imageUrl: '',
     // githubLink: 'https://github.com/scrtzuzdoyou',
   },
