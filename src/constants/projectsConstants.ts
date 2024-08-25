@@ -78,4 +78,10 @@ export const PROJECTS: Project[] = [
     image: '/image/projects/ourMenu.png',
     link: 'https://github.com/OurMenu',
   },
+  {
+    title: '헬스메이트',
+    description: '4050 세대를 위한 셀프 건강진단 서비스',
+    image: '/image/projects/healthMate.png',
+    link: 'http://bepoyong-s3-bucket.s3-website.ap-northeast-2.amazonaws.com/',
+  },
 ];
