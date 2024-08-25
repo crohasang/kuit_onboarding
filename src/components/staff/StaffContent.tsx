@@ -34,8 +34,8 @@ const StaffContent = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col">
-      <div className="flex-grow flex flex-col justify-center items-center bg-transparent text-white p-2 sm:p-4">
-        <div className="w-full max-w-4xl flex flex-col items-center justify-center">
+      <div className="flex-grow flex flex-col justify-center items-center bg-transparent text-white ">
+        <div className="w-full max-w-4xl flex flex-col items-center justify-center p-2 sm:p-4">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 sm:mb-3">
             KUIT 4기 운영진
           </h1>
@@ -54,9 +54,8 @@ const StaffContent = () => {
           </div>
           <StaffGrid staff={filteredStaff} />
         </div>
+        <Footer />
       </div>
-      <Footer />
-      <div className="mb-10" />
     </div>
   );
 };

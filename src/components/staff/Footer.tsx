@@ -3,7 +3,7 @@ import { RiKakaoTalkFill } from 'react-icons/ri';
 
 const Footer = () => {
   return (
-    <footer className="bg-black bg-opacity-50 text-white w-full py-2 text-xs mt-auto mb-4">
+    <footer className="bg-black bg-opacity-50 text-white w-full py-2 text-xs mt-2 mb-4">
       <div className="container mx-auto px-4">
         <div className="border-t border-gray-600 pt-2">
           <div className="flex flex-row justify-between items-start">
