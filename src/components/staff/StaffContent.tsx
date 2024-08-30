@@ -2,23 +2,7 @@ import React, { useState } from 'react';
 import Footer from './Footer';
 import StaffGrid from './StaffGrid';
 import STAFF from '@/constants/staffConstants';
-
-interface ChipProps {
-  label: string;
-  isSelected: boolean;
-  onClick: () => void;
-}
-
-const Chip = ({ label, isSelected, onClick }: ChipProps) => (
-  <button
-    className={`px-3 py-1 rounded-full text-xs sm:text-sm font-semibold transition-colors ${
-      isSelected ? 'bg-kuit text-black' : 'bg-white bg-opacity-10 text-white'
-    }`}
-    onClick={onClick}
-  >
-    {label}
-  </button>
-);
+import Chip from '../common/chip';
 
 const StaffContent = () => {
   const [selectedPosition, setSelectedPosition] = useState<string>('운영팀');
@@ -49,6 +33,7 @@ const StaffContent = () => {
                 label={position}
                 isSelected={selectedPosition === position}
                 onClick={() => handlePositionChange(position)}
+                size="small"
               />
             ))}
           </div>
