@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CurriculumCarousel from './CurriculumCarousel';
+import Chip from '../common/chip';
 
 const StudyContent = () => {
   const [selectedPart, setSelectedPart] = useState('Android');
@@ -67,20 +68,13 @@ const StudyContent = () => {
           variants={itemVariants}
         >
           {parts.map((part) => (
-            <motion.button
+            <Chip
               key={part}
-              className={`px-4 py-2 rounded-full ${
-                selectedPart === part
-                  ? 'bg-kuit text-black'
-                  : 'bg-white bg-opacity-10'
-              }`}
+              label={part}
+              isSelected={selectedPart === part}
               onClick={() => setSelectedPart(part)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-              {part}
-            </motion.button>
+              size="medium"
+            />
           ))}
         </motion.div>
 
