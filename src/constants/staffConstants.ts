@@ -45,12 +45,20 @@ const STAFF: StaffMember[] = [
     githubLink: 'https://github.com/nonaninona',
   },
   {
+    name: '김현주',
+    position: '운영팀',
+    role: '홍보부',
+    description:
+      '안녕하세요!\n홍보부 김현주입니다.\n\n한 학기 동안\n잘 부탁드려요 :)',
+    imageUrl: '/image/staff/kim_hyunjoo.jpg',
+  },
+  {
     name: '박원희',
     position: '운영팀',
     role: '홍보부',
     description: '안녕하세요!\n운영팀 박원희 입니다.',
     imageUrl: '/image/staff/park_wonhee.jpg',
-    githubLink: 'https://github.com/parkwonhee1219',
+    // githubLink: 'https://github.com/parkwonhee1219',
   },
   {
     name: '김채린',
