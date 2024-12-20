@@ -1,5 +1,7 @@
-import IntroduceContent from '@/components/introduce/IntroduceContent';
+'use client';
+
+import MainContent from '@/components/MainContent';
 
 export default function IntroducePage() {
-  return <IntroduceContent />;
+  return <MainContent initialPage={1} />;
 }

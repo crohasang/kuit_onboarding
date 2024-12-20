@@ -1,3 +1,5 @@
+'use client';
+
 import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
 
 interface NavigationArrowsProps {

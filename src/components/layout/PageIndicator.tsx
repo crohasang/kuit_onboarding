@@ -1,3 +1,5 @@
+'use client';
+
 interface PageIndicatorProps {
   currentPage: number;
   totalPages: number;

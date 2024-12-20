@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect } from 'react';
 import { PageTransition } from './PageTransition';
 import { PageIndicator } from './PageIndicator';
