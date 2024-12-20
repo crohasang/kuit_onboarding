@@ -32,6 +32,21 @@ body {
   }
 }
 
+@layer components {
+  .btn-nova {
+    @apply w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-950 via-purple-900 to-indigo-950 text-white rounded-lg 
+    hover:from-indigo-900 hover:via-purple-800 hover:to-indigo-900
+    shadow-[0_0_15px_rgba(139,92,246,0.5)] hover:shadow-[0_0_25px_rgba(139,92,246,0.7)]
+    border border-purple-500/30
+    transition-all duration-300 ease-out
+    font-semibold text-base sm:text-lg
+    flex justify-center items-center whitespace-normal sm:whitespace-nowrap
+    relative overflow-hidden
+    before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent
+    before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700;
+  }
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -46,7 +46,7 @@ const KuitAnimation = () => {
   };
 
   return (
-    <div className="h-full w-full  flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center justify-center">
       <motion.div
         className="text-4xl font-bold text-white flex items-center space-x-2"
         variants={containerVariants}
