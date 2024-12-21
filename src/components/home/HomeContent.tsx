@@ -10,7 +10,7 @@ const HomeContent = () => {
         <KuitAnimation />
         <div className="w-full px-4 sm:px-0 sm:w-auto">
           <Link 
-            href="/4/hackerthon" 
+            href="/4/hackathon" 
             className="btn-nova group"
           >
             <span className="relative inline-flex items-center">
