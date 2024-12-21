@@ -221,6 +221,26 @@ const HackerthonPage = () => {
             </div>
           </section>
 
+          {/* 튜토리얼 제공 섹션 */}
+          <section className="bg-black/30 p-8 rounded-lg backdrop-blur-sm border border-red-500/20">
+            <div className="flex items-center gap-4">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-500 
+                flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-red-400 via-orange-300 to-red-400 text-transparent bg-clip-text">
+                  튜토리얼 제공 여부
+                </h2>
+                <p className="text-red-200/90 mt-2">
+                  협업이 처음이신 참여자 분들을 위한 기획/디자인/협업 관련 튜토리얼 및 예시 템플릿이 팀 매칭 직후 제공될 예정입니다.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* 후원 섹션 */}
           <div className="w-full max-w-4xl mx-auto px-4 mb-8">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-white/10 px-6 py-4 rounded-lg backdrop-blur-sm">
