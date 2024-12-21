@@ -32,7 +32,7 @@ const HackathonPage = () => {
     },
     {
       title: '평가 결과 발표 및 시상 (상금 제공)',
-      date: '2025.01.05(일) 09:00',
+      date: '2025.01.04(일) 09:00',
       isLast: true
     }
   ];
@@ -110,7 +110,7 @@ const HackathonPage = () => {
                 <p className="text-red-200/90 leading-relaxed text-lg space-y-4">
                       Code Nova는 KUIT 부원들이 한 학기 동안 배운 내용을 활용하여 프로젝트를 만들어내는 해커톤입니다.
                       <br /><br />
-                      2025년 1월 3일 오후 6시부터 다음날 오전 8시까지 밤샘 코딩을 통해 사전작업을 통해 기획했던 프로젝트의 구현을 진행하게 됩니다.
+                      2025년 1월 3일 오후 6시부터 다음날 오전 8시까지 밤샘 코딩을 통해 사전작업 기간 동안 기획했던 프로젝트의 구현을 진행하게 됩니다.
                       <br /><br />
                       이후 프로젝트 발표와 평가가 이루어지고, 평가 결과 공개 및 수상이 진행됩니다.
                       <span className="block text-sm font-light text-red-200/70 italic">
