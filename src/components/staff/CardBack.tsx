@@ -8,7 +8,7 @@ interface CardBackProps {
 
 const CardBack = ({ member }: CardBackProps) => {
   return (
-    <div className="absolute w-full h-full backface-hidden rounded-[12px] overflow-hidden bg-white shadow-lg rotate-y-180 flex flex-col">
+    <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[12px] overflow-hidden bg-white shadow-lg flex flex-col">
       <div className="flex justify-end mb-2 px-4 pt-4">
         <h3 className="text-base font-bold text-black">{member.name}</h3>
       </div>
