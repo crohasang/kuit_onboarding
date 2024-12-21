@@ -1,11 +1,11 @@
 'use client';
 
-import CountdownTimer from '@/components/hackerthon/CountdownTimer';
-import NovaTimeline from '@/components/hackerthon/NovaTimeline';
+import CountdownTimer from '@/components/hackathon/CountdownTimer';
+import NovaTimeline from '@/components/hackathon/NovaTimeline';
 import Footer from '@/components/staff/Footer';
-import './hackerthon.css';
+import './hackathon.css';
 
-const HackerthonPage = () => {
+const HackathonPage = () => {
 
   const timelineEvents = [
     {
@@ -38,7 +38,7 @@ const HackerthonPage = () => {
   ];
 
   return (
-    <div className="hackerthon-background min-h-screen">
+    <div className="hackathon-background min-h-screen">
       <div className="firework-background">
         <div className="supernova"></div>
       </div>
@@ -53,7 +53,7 @@ const HackerthonPage = () => {
           When Our <span className="font-bold bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">Code</span> Becomes a <span className="font-bold bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">Nova</span>
         </p>
         <p className="text-base sm:text-lg font-bold mb-12 text-center">
-          <span className="text-kuit">KUIT</span> 4th Hackerthon
+          <span className="text-kuit">KUIT</span> 4th Hackathon
         </p>
         
         {/* 카운트다운 타이머 */}
@@ -263,4 +263,4 @@ const HackerthonPage = () => {
   );
 };
 
-export default HackerthonPage;
+export default HackathonPage;
