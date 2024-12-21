@@ -8,7 +8,7 @@ interface CardFrontProps {
 
 const CardFront = ({ member }: CardFrontProps) => {
   return (
-    <div className="absolute w-full h-full backface-hidden rounded-[12px] overflow-hidden bg-white shadow-lg flex flex-col">
+    <div className="absolute w-full h-full [backface-visibility:hidden] rounded-[12px] overflow-hidden bg-white shadow-lg flex flex-col">
       <div className="h-[180px] w-full relative overflow-hidden">
         {member.imageUrl ? (
           <Image

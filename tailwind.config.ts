@@ -6,6 +6,12 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'perspective-1000',
+    'transform-style-3d',
+    'rotate-y-180',
+    'backface-hidden'
+  ],
   theme: {
     extend: {
       backgroundImage: {
