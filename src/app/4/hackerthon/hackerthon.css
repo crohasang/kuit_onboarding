@@ -1,0 +1,117 @@
+.hackerthon-background {
+  @apply bg-black relative overflow-hidden min-h-screen z-0;
+}
+
+.firework-background {
+  @apply fixed inset-0 pointer-events-none z-10 opacity-60;
+}
+
+.cosmic-content {
+  @apply relative z-20;
+}
+
+/* 제목 스타일 */
+.cosmic-content h1 {
+  @apply font-bold tracking-wide;
+}
+
+/* 부제목 스타일 */
+.cosmic-content .subtitle {
+  @apply tracking-wide;
+}
+
+/* KUIT 브랜드 색상 */
+.text-kuit {
+  color: #00C4B8;
+}
+
+/* 섹션 제목 스타일 */
+.cosmic-content h2 {
+  @apply font-bold tracking-wide;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 일반 텍스트 스타일 */
+.cosmic-content p {
+  @apply tracking-wide;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* 강조 텍스트 스타일 */
+.cosmic-content .highlight {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.supernova {
+  @apply fixed w-32 h-32 rounded-full;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 200, 100, 0.6) 20%,
+    rgba(255, 100, 50, 0.4) 40%,
+    rgba(255, 50, 50, 0.3) 60%,
+    rgba(100, 50, 255, 0.1) 80%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  animation: supernova-lifecycle 6s infinite;
+  box-shadow: 
+    0 0 60px rgba(255, 200, 100, 0.2),
+    0 0 100px rgba(255, 100, 50, 0.1),
+    0 0 150px rgba(255, 50, 50, 0.1);
+}
+
+.supernova::before {
+  content: '';
+  @apply absolute inset-0 rounded-full;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 200, 100, 0.4) 30%,
+    rgba(255, 100, 50, 0.2) 60%,
+    transparent 100%
+  );
+  animation: supernova-glow 6s infinite;
+}
+
+.supernova::after {
+  content: '';
+  @apply absolute -inset-1/2 rounded-full;
+  background: radial-gradient(
+    circle,
+    rgba(255, 150, 50, 0.3) 0%,
+    rgba(255, 100, 50, 0.1) 40%,
+    rgba(255, 50, 50, 0.05) 70%,
+    transparent 100%
+  );
+  animation: supernova-shockwave 6s infinite;
+}
+
+@keyframes supernova-lifecycle {
+  0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+  5% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  15% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  25% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(15); opacity: 0; }
+  55% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+}
+
+@keyframes supernova-glow {
+  0% { transform: scale(1); opacity: 0; }
+  5% { transform: scale(1); opacity: 0.6; }
+  25% { transform: scale(1.2); opacity: 0.8; }
+  50% { transform: scale(2); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes supernova-shockwave {
+  0% { transform: scale(1); opacity: 0; }
+  25% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(8); opacity: 0.15; }
+  75% { transform: scale(15); opacity: 0.1; }
+  100% { transform: scale(20); opacity: 0; }
+}
