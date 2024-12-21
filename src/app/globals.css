@@ -18,12 +18,6 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -32,37 +26,35 @@ body {
   }
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+@layer components {
+  .btn-nova {
+    @apply w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-950 via-purple-900 to-indigo-950 text-white rounded-lg 
+    hover:from-indigo-900 hover:via-purple-800 hover:to-indigo-900
+    shadow-[0_0_15px_rgba(139,92,246,0.5)] hover:shadow-[0_0_25px_rgba(139,92,246,0.7)]
+    border border-purple-500/30
+    transition-all duration-300 ease-out
+    font-semibold text-base sm:text-lg
+    flex justify-center items-center whitespace-normal sm:whitespace-nowrap
+    relative overflow-hidden
+    before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent
+    before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700;
+  }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
+  /* 스크롤바 스타일 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #4fe570;
-  border-radius: 20px;
-  border: 2px solid #1a1a1a;
-}
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #1a1a1a;
+  }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #45cc63;
-}
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #45cc63;
+    border-radius: 4px;
+  }
 
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-
-.rotate-y-180 {
-  transform: rotateY(180deg);
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #45cc63;
+  }
 }

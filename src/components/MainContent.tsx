@@ -8,9 +8,13 @@ import StudyContent from './study/StudyContent';
 import ProjectsContent from './projects/ProjectsContent';
 import StaffContent from './staff/StaffContent';
 
-const MainContent = () => {
+interface MainContentProps {
+  initialPage?: number;
+}
+
+const MainContent = ({ initialPage = 0 }: MainContentProps) => {
   // 현재 페이지 상태 관리
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   // 애니메이션 진행 중 상태 관리
   const [isAnimating, setIsAnimating] = useState(false);
 
