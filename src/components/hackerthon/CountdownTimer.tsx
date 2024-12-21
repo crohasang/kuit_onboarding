@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 
 interface CountdownProps {
   targetDate: Date;
-  label: string;
+  label: ReactNode;
 }
 
 interface TimeLeft {

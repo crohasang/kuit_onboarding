@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
 const Fireworks = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const createParticles = (x: number, y: number) => {
+  const createParticles = useCallback((x: number, y: number) => {
     const particles = [];
     const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'];
     
@@ -20,9 +20,9 @@ const Fireworks = () => {
       particles.push(particle);
     }
     return particles;
-  };
+  }, []);
 
-  const explode = (container: HTMLDivElement) => {
+  const explode = useCallback((container: HTMLDivElement) => {
     const x = Math.random() * (container.offsetWidth - 100) + 50;
     const y = container.offsetHeight * 0.4;
     
@@ -43,7 +43,7 @@ const Fireworks = () => {
         }
       }, Math.random() * 100);
     });
-  };
+  }, [createParticles]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -56,7 +56,7 @@ const Fireworks = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [explode]);
 
   return <div ref={containerRef} className="firework-background" />;
 };

@@ -1,11 +1,12 @@
 'use client';
 
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import Background from '@/components/common/background/Background';
 import { usePathname } from 'next/navigation';
-import metadata from './metadata';
+import { metadata } from './metadata';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
