@@ -32,7 +32,7 @@ const HackathonPage = () => {
     },
     {
       title: '평가 결과 발표 및 시상 (상금 제공)',
-      date: '2025.01.04(일) 09:00',
+      date: '2025.01.04(토) 09:00',
       isLast: true
     }
   ];
