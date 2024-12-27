@@ -10,16 +10,16 @@ const HackathonPage = () => {
   const timelineEvents = [
     {
       title: '접수',
-      date: '12.22(일) ~ 12.27(금)',
+      date: '12.22(일) ~ 12.29(일)',
       isActive: true
     },
     {
       title: '주제/팀 발표',
-      date: '12.30(월) 10:00'
+      date: '12.30(월) 12:00'
     },
     {
       title: '사전작업',
-      date: '12.30(월) 10:00 ~ 2025.01.03(금) 18:00',
+      date: '12.30(월) 12:00 ~ 2025.01.03(금) 18:00',
       description: '* 각 팀 개별 진행'
     },
     {
@@ -59,8 +59,8 @@ const HackathonPage = () => {
         {/* 카운트다운 타이머 */}
         <div className="w-full max-w-4xl mb-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <CountdownTimer
-            targetDate={new Date('2024-12-28T00:00:00+09:00')}
-            label={<span className="text-red-300 text-white">접수 마감까지</span>}
+            targetDate={new Date('2024-12-30T00:00:00+09:00')}
+            label={<span className="text-red-300 text-white">추가 모집 접수 마감까지</span>}
           />
           <CountdownTimer
             targetDate={new Date('2025-01-03T18:00:00+09:00')}
