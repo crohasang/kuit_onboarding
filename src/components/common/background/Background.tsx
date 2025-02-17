@@ -10,7 +10,7 @@ const Background = ({ pathname }: BackgroundProps) => {
   if (pathname === '/4/hackathon') return null;
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-20">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-10">
       <Image
         src="/image/background.svg"
         alt="Background"

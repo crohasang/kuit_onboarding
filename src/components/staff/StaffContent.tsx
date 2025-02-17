@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
 import StaffGrid from './StaffGrid';
-import STAFF from '@/constants/staffConstants';
+import STAFFS from '@/constants/staffConstants';
 import Chip from '../common/chip';
 
-const StaffContent = () => {
+interface StaffContentProps {
+  generation?: 5 | 4;
+}
+
+const StaffContent = ({ generation = 4 }: StaffContentProps) => {
   const [selectedPosition, setSelectedPosition] = useState<string>('운영팀');
   const positions = ['운영팀', 'Android', 'Web', 'Server', 'PM'];
 
-  const filteredStaff = STAFF.filter(
+  const filteredStaff = STAFFS[generation].filter(
     (member) => member.position === selectedPosition
   );
 
@@ -18,10 +22,10 @@ const StaffContent = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col">
-      <div className="flex-grow flex flex-col justify-center items-center bg-transparent text-white ">
+      <div className="flex-grow flex flex-col justify-center items-center bg-transparent text-white">
         <div className="w-full max-w-4xl flex flex-col items-center justify-center p-2 sm:p-4">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 sm:mb-3">
-            KUIT 4기 운영진
+            KUIT {generation}기 운영진
           </h1>
           <h2 className="text-xs sm:text-sm md:text-base text-center text-kuit mb-2 sm:mb-3">
             카드를 클릭해 뒷면을 확인해보세요!
@@ -37,7 +41,7 @@ const StaffContent = () => {
               />
             ))}
           </div>
-          <StaffGrid staff={filteredStaff} />
+          <StaffGrid staffs={filteredStaff} generation={generation} />
         </div>
         <Footer />
       </div>

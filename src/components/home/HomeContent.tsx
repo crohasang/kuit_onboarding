@@ -9,7 +9,7 @@ const HomeContent = () => {
       <div className="flex-1 flex flex-col items-center justify-center gap-12">
         <KuitAnimation />
         <div className="w-full px-4 sm:px-0 sm:w-auto">
-          <Link 
+          {/* <Link 
             href="/4/hackathon" 
             className="btn-nova group"
           >
@@ -19,7 +19,7 @@ const HomeContent = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
