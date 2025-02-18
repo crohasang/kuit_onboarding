@@ -265,7 +265,6 @@ const STAFFS: { [key: number]: StaffMember[] } = {
       role: 'Web 파트장',
       description: '',
       imageUrl: '',
-      githubLink: 'https://github.com',
     },
     {
       name: '전진호',
@@ -291,7 +290,6 @@ const STAFFS: { [key: number]: StaffMember[] } = {
       role: 'Server 파트장',
       description: '',
       imageUrl: '',
-      githubLink: 'https://github.com',
     },
     {
       name: '임제형',
@@ -299,7 +297,6 @@ const STAFFS: { [key: number]: StaffMember[] } = {
       role: 'Server 파트장',
       description: '한 학기 동안 같이 성장해 나갔면 좋겠습니다.\n\n잘 부탁드립니다!!!',
       imageUrl: '/image/staff/lim_jehyeong.jpg',
-      githubLink: 'https://github.com',
     },
     {
       name: '장현준',
@@ -307,7 +304,6 @@ const STAFFS: { [key: number]: StaffMember[] } = {
       role: 'Server 파트장',
       description: '',
       imageUrl: '',
-      githubLink: 'https://github.com',
     },
     {
       name: '함형주',

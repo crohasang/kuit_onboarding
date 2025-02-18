@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+// import Link from 'next/link';
 import KuitAnimation from './KuitAnimation';
 
 const HomeContent = () => {
@@ -8,7 +8,7 @@ const HomeContent = () => {
     <div className="h-full w-full flex flex-col items-center">
       <div className="flex-1 flex flex-col items-center justify-center gap-12">
         <KuitAnimation />
-        <div className="w-full px-4 sm:px-0 sm:w-auto">
+        {/* <div className="w-full px-4 sm:px-0 sm:w-auto"> */}
           {/* <Link 
             href="/4/hackathon" 
             className="btn-nova group"
@@ -20,7 +20,7 @@ const HomeContent = () => {
               </svg>
             </span>
           </Link> */}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
