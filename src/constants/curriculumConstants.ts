@@ -45,7 +45,15 @@ export const CURRICULUM: CurriculumData = {
       'Extra Mile',
     ],
     5: [
-      '업데이트 예정입니다'
+      '협업과 웹사이트 구성',
+      'CSS 스타일링',
+      'Javascript',
+      'React 프로젝트 설정 및 기초',
+      'React로 생각하기',
+      '라우팅 및 컴포넌트 스타일링',
+      '상태 관리',
+      'Data Fetching, 컴포넌트의 생명주기',
+      'Typescript',
     ]
   },
   Server: {
@@ -62,7 +70,16 @@ export const CURRICULUM: CurriculumData = {
       'JDBC로 REST API 개발, 페이징 처리',
     ],
     5: [
-      '업데이트 예정입니다'
+      '객체지향 & Test',
+      '리팩토링',
+      'HTTP Tomcat',
+      '서블릿 JSP',
+      '서블릿 JDBCTemplate (AJAX)',
+      '서블릿 MVC',
+      'Spring MVC & DI, IoC',
+      '인증/인가, 데이터베이스와 ERD 설계',
+      'REST API 개발, 페이징 처리'
+
     ]
   },
   PM: {
@@ -75,7 +92,15 @@ export const CURRICULUM: CurriculumData = {
       '디자이너 협업/Q&A (6~10주차)',
     ],
     5: [
-      '업데이트 예정입니다',
+      '프로젝트 개요/PM 개요',
+      '서비스 기획 구체화하기',
+      '유저 설정하기',
+      '화면 개요 구성하기',
+      '서비스 컨셉 구상하기',
+      '프로토타입 제작하기 (1)',
+      '프로토타입 제작하기 (2)',
+      '디자인 시스템 구축하기',
+      '협업 준비하기'
     ]
   }
 };

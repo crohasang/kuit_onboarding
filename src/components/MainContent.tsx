@@ -15,7 +15,7 @@ interface MainContentProps {
   generation?: 4 | 5;
 }
 
-const MainContent = ({ initialPage = 0, generation = 4 }: MainContentProps) => {
+const MainContent = ({ initialPage = 0, generation = 5 }: MainContentProps) => {
   // 현재 페이지 상태 관리
   const [currentPage, setCurrentPage] = useState(initialPage);
   // 애니메이션 진행 중 상태 관리
