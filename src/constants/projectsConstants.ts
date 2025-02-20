@@ -13,6 +13,12 @@ export const PROJECTS: Project[] = [
     link: 'https://drive.google.com/file/d/1WYcc5_cneaybthiZkUBU5uCnbI5BkIXH/view',
   },
   {
+    title: '스페이스 (Space)',
+    description: '동아리/팀프로젝트 커뮤니티',
+    image: '/image/projects/space.png',
+    link: 'https://kuit-space.github.io/KUIT-Space-front/',
+  },
+  {
     title: 'Beering',
     description: '나만의 맥주 취향 아카이빙 서비스',
     image: '/image/projects/beering.png',

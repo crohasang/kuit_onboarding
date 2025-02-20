@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CurriculumCarousel from './CurriculumCarousel';
 import Chip from '../common/chip';
+import { STUDY_CONTENT } from '@/constants/studyConstants';
 
-const StudyContent = () => {
-  const [selectedPart, setSelectedPart] = useState('Android');
-  const parts = ['Android', 'Web', 'Server', 'PM'];
+interface StudyContentProps {
+  generation?: 4 | 5;
+}
+
+const StudyContent = ({ generation = 4 }: StudyContentProps) => {
+  const content = STUDY_CONTENT[generation];
+  const [selectedPart, setSelectedPart] = useState(content.description.parts[0]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,7 +48,7 @@ const StudyContent = () => {
           className="text-4xl sm:text-5xl font-bold text-center mb-6"
           variants={itemVariants}
         >
-          Study
+          {content.title}
         </motion.h1>
 
         <motion.div
@@ -51,15 +56,15 @@ const StudyContent = () => {
           variants={itemVariants}
         >
           <p>
-            KUIT 4기는{' '}
+            KUIT {generation}기는{' '}
             <span className="text-kuit font-semibold">
-              Android, Web, Server, PM
+              {content.description.parts.join(', ')}
             </span>{' '}
             파트로 이루어져 있고,
           </p>
-          <p>학기 중 10주간 스터디가 진행됩니다.</p>
+          <p>{content.description.duration}</p>
           <p className="mt-2 font-semibold">
-            희망하는 파트의 커리큘럼을 확인해보세요!
+            {content.description.message}
           </p>
         </motion.div>
 
@@ -67,7 +72,7 @@ const StudyContent = () => {
           className="flex justify-center space-x-4 mb-8"
           variants={itemVariants}
         >
-          {parts.map((part) => (
+          {content.description.parts.map((part) => (
             <Chip
               key={part}
               label={part}
@@ -90,7 +95,7 @@ const StudyContent = () => {
               damping: 30,
             }}
           >
-            <CurriculumCarousel part={selectedPart} />
+            <CurriculumCarousel part={selectedPart} generation={generation} />
           </motion.div>
         </AnimatePresence>
       </div>

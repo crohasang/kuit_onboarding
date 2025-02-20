@@ -3,10 +3,11 @@ import StaffCard from './StaffCard';
 import { StaffMember } from '@/constants/staffConstants';
 
 interface StaffGridProps {
-  staff: StaffMember[];
+  staffs: StaffMember[];
+  generation: 5 | 4 ;
 }
 
-const StaffGrid = ({ staff }: StaffGridProps) => {
+const StaffGrid = ({ staffs, generation }: StaffGridProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,16 +30,32 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
       e.preventDefault();
     };
 
+    const handleWheel = (e: WheelEvent) => {
+      if (e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        currentRef.scrollLeft += e.deltaX || e.deltaY;
+      }
+
+      else if (Math.abs(e.deltaY) > 0) {
+        e.preventDefault();
+        currentRef.scrollLeft += e.deltaY;
+      }
+    };
+
     currentRef.addEventListener('touchstart', handleTouchStart, {
       passive: false,
     });
     currentRef.addEventListener('touchmove', handleTouchMove, {
       passive: false,
     });
+    currentRef.addEventListener('wheel', handleWheel, {
+      passive: false,
+    });
 
     return () => {
       currentRef.removeEventListener('touchstart', handleTouchStart);
       currentRef.removeEventListener('touchmove', handleTouchMove);
+      currentRef.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
@@ -66,9 +83,9 @@ const StaffGrid = ({ staff }: StaffGridProps) => {
           }
         `}</style>
         <div className="flex flex-nowrap justify-center gap-3 px-2 sm:px-3 pb-2 sm:pb-3 pt-1 sm:pt-2 min-w-max">
-          {staff.map((member) => (
+          {staffs.map((member) => (
             <div key={member.name} className="flex-shrink-0">
-              <StaffCard member={member} />
+              <StaffCard member={member}/>
             </div>
           ))}
         </div>

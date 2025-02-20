@@ -2,11 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { Project } from '@/constants/projectsConstants';
 
-const ProjectCard: React.FC<{
+const ProjectCard = ({ project, width, height }: {
   project: Project;
   width: string;
   height: string;
-}> = ({ project, width, height }) => {
+}) => {
   const handleClick = () => {
     if (project.link) {
       window.open(project.link, '_blank', 'noopener,noreferrer');

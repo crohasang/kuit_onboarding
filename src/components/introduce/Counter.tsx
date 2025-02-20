@@ -11,7 +11,7 @@ interface CounterProps {
   duration?: number;
 }
 
-const Counter: React.FC<CounterProps> = ({ end = 100, duration = 2000 }) => {
+const Counter = ({ end = 100, duration = 2000 }: CounterProps) => {
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {

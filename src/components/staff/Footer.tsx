@@ -1,7 +1,9 @@
 import { FaInstagram } from 'react-icons/fa';
 import { RiKakaoTalkFill } from 'react-icons/ri';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const pathname = usePathname();
   return (
     <footer className="bg-black bg-opacity-50 text-white w-full py-2 text-xs mt-2 mb-4">
       <div className="container mx-auto px-4">
@@ -34,11 +36,13 @@ const Footer = () => {
               </div>
 
               <div className="text-right mb-1">
-                <p>&copy; 2024 KUIT. All rights reserved.</p>
+                <p>&copy; 2023-2025 KUIT. All rights reserved.</p>
               </div>
-              <p className="text-xs text-right">
-                Designed & Developed by Cho Hasang
-              </p>
+              {(pathname === '/4/introduce' || pathname === '/4/hackathon') && (
+                <p className="text-xs text-right">
+                  Designed & Developed by Cho Hasang
+                </p>
+              )}
             </div>
           </div>
         </div>

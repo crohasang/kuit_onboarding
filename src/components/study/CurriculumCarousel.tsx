@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { v4 as uuid } from 'uuid';
-import { CurriculumData, CURRICULUM } from '@/constants/curriculumConstants';
+import { CURRICULUM, CurriculumData } from '@/constants/curriculumConstants';
 
 interface CurriculumCarouselProps {
-  part: keyof CurriculumData;
+  part: string;
+  generation?: 5 | 4;
 }
 
-const CurriculumCarousel: React.FC<CurriculumCarouselProps> = ({ part }) => {
+const CurriculumCarousel = ({ part, generation = 5 } : CurriculumCarouselProps) => {
   const [currentWeek, setCurrentWeek] = useState(0);
   const [direction, setDirection] = useState(0);
-  const totalWeeks = CURRICULUM[part].length;
+  const curriculum = CURRICULUM[part][generation];
+  const totalWeeks = curriculum.length;
 
   const nextWeek = () => {
     setDirection(1);
@@ -73,7 +75,7 @@ const CurriculumCarousel: React.FC<CurriculumCarouselProps> = ({ part }) => {
               <h4 className="text-lg font-semibold mb-2">
                 {currentWeek + 1}주차
               </h4>
-              <p className="text-center">{CURRICULUM[part][currentWeek]}</p>
+              <p className="text-center">{curriculum[currentWeek]}</p>
             </motion.div>
           </AnimatePresence>
         </div>

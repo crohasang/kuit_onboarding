@@ -16,6 +16,7 @@ const CardFront = ({ member }: CardFrontProps) => {
             alt={member.name}
             layout="fill"
             objectFit="cover"
+            objectPosition="top"
           />
         ) : (
           <svg
