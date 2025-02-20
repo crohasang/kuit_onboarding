@@ -237,7 +237,7 @@ const STAFFS: { [key: number]: StaffMember[] } = {
       role: '운영팀',
       description:
         'Keep Calm and Carry On',
-      imageUrl: '/image/staff/cho_hasang_5.JPG',
+      imageUrl: '/image/staff/cho_hasang_5.jpg',
       githubLink: 'https://github.com/crohasang',
       siteLink: 'https://crohasang.com',
     },
