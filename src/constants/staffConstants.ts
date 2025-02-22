@@ -268,12 +268,21 @@ const STAFFS: { [key: number]: StaffMember[] } = {
       githubLink: 'https://github.com/casper-jr',
     },
     // WEB
+    
     {
       name: '권동희',
       position: 'Web',
       role: 'Web 파트장',
-      description: '',
-      imageUrl: '',
+      description: '🍀',
+      imageUrl: '/image/staff/kwon_donghee.jpeg',
+    },
+    {
+      name: '김지환',
+      position: 'Web',
+      role: 'Web 파트장',
+      description: '303 See Other',
+      imageUrl: '/image/staff/kim_jihwan.png',
+      githubLink: 'https://github.com/Turtle-Hwan',
     },
     {
       name: '전진호',
