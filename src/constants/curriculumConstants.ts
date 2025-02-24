@@ -72,8 +72,8 @@ export const CURRICULUM: CurriculumData = {
     5: [
       '객체지향 & Test',
       '리팩토링',
-      'HTTP Tomcat',
-      '서블릿 JSP',
+      'HTTP와 Tomcat',
+      '서블릿/JSP',
       '서블릿 JDBCTemplate (AJAX)',
       '서블릿 MVC',
       'Spring MVC & DI, IoC',
@@ -96,9 +96,9 @@ export const CURRICULUM: CurriculumData = {
       '서비스 기획 구체화하기',
       '유저 설정하기',
       '화면 개요 구성하기',
+      '디자이너 모집글 작성하기',
       '서비스 컨셉 구상하기',
-      '프로토타입 제작하기 (1)',
-      '프로토타입 제작하기 (2)',
+      '프로토타입 제작하기',
       '디자인 시스템 구축하기',
       '협업 준비하기'
     ]
