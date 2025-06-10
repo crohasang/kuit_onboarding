@@ -2,7 +2,7 @@ const HackathonButtonSection = () => {
   return (
     <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12 mb-20">
       <a
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        href="https://forms.gle/dr5E4pxszQ9ELJvw6"
         target="_blank"
         rel="noopener noreferrer"
         className="group w-full px-8 py-3 text-white font-medium rounded-lg bg-blue-500/50 hover:bg-white hover:text-black transition-all duration-300 text-center"
@@ -25,7 +25,7 @@ const HackathonButtonSection = () => {
         </span>
       </a>
       <a
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        href="https://forms.gle/MdVQuuyJi9fev3kp7"
         target="_blank"
         rel="noopener noreferrer"
         className="group w-full px-8 py-3 text-white font-medium rounded-lg bg-blue-500/50 hover:bg-white hover:text-black transition-all duration-300 text-center"

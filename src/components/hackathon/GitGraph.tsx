@@ -193,6 +193,28 @@ const GitGraph = () => {
   );
 
   useEffect(() => {
+    console.log(
+      "%c" +
+        "██╗  ██╗██╗   ██╗██╗████████╗" +
+        "\n" +
+        "██║ ██╔╝██║   ██║██║╚══██╔══╝" +
+        "\n" +
+        "█████╔╝ ██║   ██║██║   ██║   " +
+        "\n" +
+        "██╔═██╗ ██║   ██║██║   ██║   " +
+        "\n" +
+        "██║  ██╗╚██████╔╝██║   ██║   " +
+        "\n" +
+        "╚═╝  ╚═╝ ╚═════╝ ╚═╝   ╚═╝   " +
+        "\n\n" +
+        "🚀 개발자 모드를 연 당신! KUIT 해커톤에 참가하세요 >.< 🚀" +
+        "\n\n" +
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "color: #9ACD32; font-weight: bold; font-family: monospace; font-size: 12px;"
+    );
+  }, []);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
