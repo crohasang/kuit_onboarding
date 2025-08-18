@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { ReactNode } from 'react';
+import { useEffect, useState } from "react";
+import { ReactNode } from "react";
 
 interface CountdownProps {
   targetDate: Date;
   label: ReactNode;
+  isFifth?: boolean;
 }
 
 interface TimeLeft {
@@ -15,32 +16,38 @@ interface TimeLeft {
   seconds: number;
 }
 
-const CountdownTimer = ({ targetDate, label }: CountdownProps) => {
+const CountdownTimer = ({
+  targetDate,
+  label,
+  isFifth = false,
+}: CountdownProps) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
       const difference = targetDate.getTime() - new Date().getTime();
-      
+
       if (difference <= 0) {
         setIsExpired(true);
         return {
           days: 0,
           hours: 0,
           minutes: 0,
-          seconds: 0
+          seconds: 0,
         };
       }
 
       // 일, 시, 분, 초 계산
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -58,7 +65,12 @@ const CountdownTimer = ({ targetDate, label }: CountdownProps) => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const formatNumber = (num: number) => num.toString().padStart(2, '0');
+  const formatNumber = (num: number) => num.toString().padStart(2, "0");
+
+  // isFifth에 따라 색상 변경
+  const gradientClass = isFifth
+    ? "bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400"
+    : "bg-gradient-to-r from-red-400 via-orange-300 to-red-400";
 
   return (
     <div className="flex flex-col items-center space-y-2">
@@ -66,28 +78,36 @@ const CountdownTimer = ({ targetDate, label }: CountdownProps) => {
         {label && <div className="mb-2 text-white">{label}</div>}
         <div className="grid grid-flow-col gap-4 text-center auto-cols-max items-center">
           <div className="flex flex-col">
-            <span className="font-mono text-4xl bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">
+            <span
+              className={`font-mono text-4xl ${gradientClass} bg-clip-text text-transparent`}
+            >
               {formatNumber(timeLeft.days)}
             </span>
             <span className="text-xs text-white">일</span>
           </div>
           <span className="text-2xl text-white">:</span>
           <div className="flex flex-col">
-            <span className="font-mono text-4xl bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">
+            <span
+              className={`font-mono text-4xl ${gradientClass} bg-clip-text text-transparent`}
+            >
               {formatNumber(timeLeft.hours)}
             </span>
             <span className="text-xs text-white">시</span>
           </div>
           <span className="text-2xl text-white">:</span>
           <div className="flex flex-col">
-            <span className="font-mono text-4xl bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">
+            <span
+              className={`font-mono text-4xl ${gradientClass} bg-clip-text text-transparent`}
+            >
               {formatNumber(timeLeft.minutes)}
             </span>
             <span className="text-xs text-white">분</span>
           </div>
           <span className="text-2xl text-white">:</span>
           <div className="flex flex-col">
-            <span className="font-mono text-4xl bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">
+            <span
+              className={`font-mono text-4xl ${gradientClass} bg-clip-text text-transparent`}
+            >
               {formatNumber(timeLeft.seconds)}
             </span>
             <span className="text-xs text-white">초</span>

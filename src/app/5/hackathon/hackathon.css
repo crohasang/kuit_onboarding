@@ -1,0 +1,43 @@
+.hackathon-background {
+  @apply bg-black relative overflow-hidden min-h-screen z-0;
+}
+
+.gitgraph-background {
+  @apply fixed inset-0 pointer-events-none z-10 opacity-60;
+}
+
+.content {
+  @apply relative z-20;
+}
+
+/* 제목 스타일 */
+.content h1 {
+  @apply font-bold tracking-wide;
+}
+
+/* 부제목 스타일 */
+.content .subtitle {
+  @apply tracking-wide;
+}
+
+/* KUIT 브랜드 색상 */
+.text-kuit {
+  color: #4fe570;
+}
+
+/* 섹션 제목 스타일 */
+.content h2 {
+  @apply font-bold tracking-wide;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 일반 텍스트 스타일 */
+.content p {
+  @apply tracking-wide;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* 강조 텍스트 스타일 */
+.content .highlight {
+  color: rgba(255, 255, 255, 0.95);
+}

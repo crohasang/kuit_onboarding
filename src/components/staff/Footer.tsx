@@ -1,6 +1,8 @@
-import { FaInstagram } from 'react-icons/fa';
-import { RiKakaoTalkFill } from 'react-icons/ri';
-import { usePathname } from 'next/navigation';
+"use client";
+
+import { FaInstagram } from "react-icons/fa";
+import { RiKakaoTalkFill } from "react-icons/ri";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -38,7 +40,7 @@ const Footer = () => {
               <div className="text-right mb-1">
                 <p>&copy; 2023-2025 KUIT. All rights reserved.</p>
               </div>
-              {(pathname === '/4/introduce' || pathname === '/4/hackathon') && (
+              {(pathname === "/4/introduce" || pathname === "/4/hackathon") && (
                 <p className="text-xs text-right">
                   Designed & Developed by Cho Hasang
                 </p>
