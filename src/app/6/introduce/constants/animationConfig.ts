@@ -9,3 +9,13 @@ export const TEXT_ANIMATION_CONFIG = {
       containerFinalScale: 30,
     },
   };
+
+  export const NUMBER_MORPH_CONFIG = {
+    scroll: {
+      endTrigger: '+=4000',
+    },
+    link: {
+      initialY: 20,
+    },
+  };
+  
