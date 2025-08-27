@@ -1,11 +1,11 @@
-import FirstInteraction from "./_components/FirstInteraction.tsx";
-import SecondInteraction from "./_components/SecondInteraction.tsx";
+import BodyClassManager from "./_components/BodyClassManager.tsx";
+import IntroduceAnimationContainer from "./_components/IntroduceAnimationContainer.tsx";
 
 const SixthIntroducePage = () => {
   return (
     <>
-      <FirstInteraction />
-      <SecondInteraction />
+      <BodyClassManager />
+      <IntroduceAnimationContainer />
     </>
   );
 }

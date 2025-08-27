@@ -1,25 +1,27 @@
 'use client';
 
-import { useRef, useCallback } from 'react';
-import { useTextIntroAndZoom } from '../hooks/useTextIntroAndZoom.ts';
+import { useCallback } from 'react';
 
-const FirstInteraction = () => {
-  const mainRef = useRef<HTMLElement | null>(null);
-  const textContainerRef = useRef<HTMLDivElement | null>(null);
-  const lettersRef = useRef<Array<HTMLSpanElement>>([]);
-  const iLineRef = useRef<HTMLDivElement | null>(null);
+interface FirstInteractionProps {
+  refs: {
+    mainRef: React.RefObject<HTMLElement>;
+    textContainerRef: React.RefObject<HTMLDivElement>;
+    lettersRef: React.RefObject<HTMLSpanElement[]>;
+    iLineRef: React.RefObject<HTMLDivElement>;
+  };
+}
 
-  useTextIntroAndZoom({ mainRef, textContainerRef, lettersRef, iLineRef });
+const FirstInteraction = ({ refs }: FirstInteractionProps) => {
+  const { mainRef, textContainerRef, lettersRef, iLineRef } = refs;
 
   const addToLettersRef = useCallback((el: HTMLSpanElement | null) => {
-    if (el && !lettersRef.current.includes(el)) {
+    if (el && lettersRef.current && !lettersRef.current.includes(el)) {
       lettersRef.current.push(el);
     }
-  }, []);
+  }, [lettersRef]);
 
   return (
-    <>
-      <main ref={mainRef} className="w-screen h-screen bg-black flex items-center justify-center">
+      <main ref={mainRef} className="absolute inset-0 w-screen h-screen bg-black flex items-center justify-center">
         <div
           ref={textContainerRef}
           className="grid grid-cols-[auto_auto_1ch_auto] font-semibold text-white items-start"
@@ -37,9 +39,7 @@ const FirstInteraction = () => {
           </div>
         </div>
       </main>
-      <div style={{ height: '3000px', background: 'black' }}></div>
-    </>
   );
-}
+};
 
 export default FirstInteraction;

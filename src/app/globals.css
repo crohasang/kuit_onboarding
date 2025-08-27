@@ -15,6 +15,7 @@ body.sixth-introduce-page {
   overscroll-behavior: contain;
 }
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
