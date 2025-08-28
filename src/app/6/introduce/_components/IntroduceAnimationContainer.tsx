@@ -182,9 +182,19 @@ const IntroduceAnimationContainer = () => {
         pin: true,
         scrub: 1,
         animation: scrollTl,
+        // 아래 콜백 추가
+        onLeave: () => {
+          document.body.style.overflow = 'hidden';
+        },
+        onEnterBack: () => {
+          document.body.style.overflow = '';
+        },
       });
     }, containerRef);
-    return () => ctx.revert();
+    return () => {
+      document.body.style.overflow = ''; // 컴포넌트 unmount 시 스크롤 복원
+      ctx.revert();
+    };
   }, [isIntroFinished]);
 
   return (

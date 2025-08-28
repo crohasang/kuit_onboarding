@@ -9,11 +9,12 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const isSixthIntroducePage = pathname === '/6/introduce';
 
   return (
     <div className="relative min-h-screen">
-      <Background pathname={pathname} />
-      <div className="relative z-10">
+      {!isSixthIntroducePage && <Background pathname={pathname} />}
+      <div className={!isSixthIntroducePage ? 'relative z-10' : ''}>
         <main>{children}</main>
       </div>
     </div>
