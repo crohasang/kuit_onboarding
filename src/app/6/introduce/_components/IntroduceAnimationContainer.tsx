@@ -133,7 +133,7 @@ const IntroduceAnimationContainer = () => {
           autoAlpha: 1,
           duration: 1,
           ease: 'power2.in',
-        }, '<+=1.5');
+        }, '<+=2.0');
 
       ScrollTrigger.create({
         trigger: containerRef.current,
