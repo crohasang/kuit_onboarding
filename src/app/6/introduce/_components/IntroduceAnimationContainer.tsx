@@ -34,6 +34,7 @@ const IntroduceAnimationContainer = () => {
   const webGroupRef = useRef<HTMLDivElement | null>(null);
   const serverGroupRef = useRef<HTMLDivElement | null>(null);
   const designGroupRef = useRef<HTMLDivElement | null>(null);
+  const applySectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -81,6 +82,7 @@ const IntroduceAnimationContainer = () => {
       gsap.set(studyGroupRef.current, { autoAlpha: 0 });
       gsap.set(projectLinkRef.current, { autoAlpha: 0, y: NUMBER_MORPH_CONFIG.link.initialY });
       gsap.set(curriculumLinkRef.current, { autoAlpha: 0, y: NUMBER_MORPH_CONFIG.link.initialY });
+      gsap.set(applySectionRef.current, { autoAlpha: 0 });
 
       const techStackRefs = [managementGroupRef, androidGroupRef, webGroupRef, serverGroupRef, designGroupRef];
       techStackRefs.forEach(ref => {
@@ -143,9 +145,9 @@ const IntroduceAnimationContainer = () => {
         .to(
           digit9Ref.current,
           {
-            scale: 50,
-            duration: 2,
-            ease: 'power2.in',
+            scale: 200,
+            duration: 1.5,
+            ease: 'expo.in',
             transformOrigin: '75% 25%',
           },
           '<',
@@ -154,10 +156,10 @@ const IntroduceAnimationContainer = () => {
           thirdInteractionRef.current,
           {
             autoAlpha: 1,
-            duration: 1,
-            ease: 'power2.in',
+            duration: 0.7,
+            ease: 'power2.out',
           },
-          '<+=2.0',
+          '-=0.3',
         );
 
       techStackRefs.forEach(ref => {
@@ -167,10 +169,16 @@ const IntroduceAnimationContainer = () => {
           .to(ref.current, { autoAlpha: 0, xPercent: -100, duration: 1, ease: 'power2.in' });
       });
 
+      scrollTl.to(applySectionRef.current, {
+        autoAlpha: 1,
+        duration: 1,
+        ease: 'power2.out',
+      });
+
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=10000',
+        end: '+=12000',
         pin: true,
         scrub: 1,
         animation: scrollTl,
@@ -212,6 +220,7 @@ const IntroduceAnimationContainer = () => {
           webGroupRef,
           serverGroupRef,
           designGroupRef,
+          applySectionRef,
         }}
       />
     </div>

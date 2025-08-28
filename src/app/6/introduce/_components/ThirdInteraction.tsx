@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { DotLottiePlayer as Player } from '@dotlottie/react-player';
 import '@dotlottie/react-player/dist/index.css';
@@ -16,6 +16,7 @@ interface ThirdInteractionProps {
     webGroupRef: React.RefObject<HTMLDivElement>;
     serverGroupRef: React.RefObject<HTMLDivElement>;
     designGroupRef: React.RefObject<HTMLDivElement>;
+    applySectionRef: React.RefObject<HTMLDivElement>;
   };
 }
 
@@ -108,8 +109,71 @@ const TechStack = ({
   </div>
 );
 
+const CountdownTimer = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const calculateTimeLeft = () => {
+    const difference = +new Date('2025-09-05T23:59:59+09:00') - +new Date();
+    let timeLeft: { days?: number; hours?: number; minutes?: number; seconds?: number } = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    if (!isClient) return;
+
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  const hasTimeLeft = Object.values(timeLeft).some(value => value > 0);
+
+  if (!isClient) {
+    return (
+      <div className="text-center my-4">
+        <div className="text-5xl md:text-7xl font-bold text-black font-mono" style={{ opacity: 0 }}>
+          00:00:00:00
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="text-center my-4">
+      {hasTimeLeft ? (
+        <div className="text-5xl md:text-7xl font-bold text-black font-mono">
+          <span>{String(timeLeft.days).padStart(2, '0')}:</span>
+          <span>{String(timeLeft.hours).padStart(2, '0')}:</span>
+          <span>{String(timeLeft.minutes).padStart(2, '0')}:</span>
+          <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
+        </div>
+      ) : (
+        <span className="text-2xl md:text-4xl font-bold text-black">모집이 마감되었습니다.</span>
+      )}
+    </div>
+  );
+};
+
 const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
-  const { sectionRef, managementGroupRef, androidGroupRef, webGroupRef, serverGroupRef, designGroupRef } = refs;
+  const { sectionRef, managementGroupRef, androidGroupRef, webGroupRef, serverGroupRef, designGroupRef, applySectionRef } =
+    refs;
   const topMarqueeRef = useRef<HTMLDivElement>(null);
   const bottomMarqueeRef = useRef<HTMLDivElement>(null);
 
@@ -185,6 +249,29 @@ const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
           fRef={designGroupRef}
           staff={[...STAFF_DATA.PM, ...STAFF_DATA.Design]}
         />
+        <div ref={applySectionRef} className="absolute inset-0 flex flex-col items-center justify-center">
+          <CountdownTimer />
+          <a
+            href="https://forms.gle/4rFKsrrH9No2HEiT6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 px-10 py-3 text-xl font-bold text-white rounded-full shadow-lg transition-transform transform hover:scale-105"
+            style={{ background: 'linear-gradient(90deg, #7427ff, #002aff)' }}
+          >
+            KUIT 6기 지원하기
+          </a>
+          <p className="mt-6 text-sm text-gray-500">
+            Created By{' '}
+            <a
+              href="https://github.com/crohasang"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-gray-700 underline hover:text-blue-600 transition-colors"
+            >
+              crohasang
+            </a>
+          </p>
+        </div>
       </div>
 
       <div
