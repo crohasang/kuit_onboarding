@@ -2,10 +2,17 @@
 
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { DotLottiePlayer as Player } from '@dotlottie/react-player';
+import '@dotlottie/react-player/dist/index.css';
 
 interface ThirdInteractionProps {
   refs: {
     sectionRef: React.RefObject<HTMLElement>;
+    managementGroupRef: React.RefObject<HTMLDivElement>;
+    androidGroupRef: React.RefObject<HTMLDivElement>;
+    webGroupRef: React.RefObject<HTMLDivElement>;
+    serverGroupRef: React.RefObject<HTMLDivElement>;
+    designGroupRef: React.RefObject<HTMLDivElement>;
   };
 }
 
@@ -48,8 +55,28 @@ const MarqueeItem = ({ text, direction }: { text: string; direction: 'left' | 'r
   </div>
 );
 
+const TechStack = ({
+  lottie,
+  name,
+  fRef,
+}: {
+  lottie: string;
+  name: string;
+  fRef: React.RefObject<HTMLDivElement>;
+}) => (
+  <div
+    ref={fRef}
+    className="absolute inset-0 flex items-center justify-center"
+  >
+    <div className="flex items-center justify-center">
+      <Player src={lottie} autoplay loop style={{ width: '250px', height: '250px' }} />
+      <span className="text-5xl md:text-7xl font-bold text-black ml-4 md:ml-8">{name}</span>
+    </div>
+  </div>
+);
+
 const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
-  const { sectionRef } = refs;
+  const { sectionRef, managementGroupRef, androidGroupRef, webGroupRef, serverGroupRef, designGroupRef } = refs;
   const topMarqueeRef = useRef<HTMLDivElement>(null);
   const bottomMarqueeRef = useRef<HTMLDivElement>(null);
 
@@ -80,9 +107,8 @@ const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
     return () => ctx.revert();
   }, []);
 
-  const renderMarqueeContent = (text: string, direction: 'left' | 'right') => (
-    Array.from({ length: 10 }).map((_, i) => <MarqueeItem key={i} text={text} direction={direction} />)
-  );
+  const renderMarqueeContent = (text: string, direction: 'left' | 'right') =>
+    Array.from({ length: 10 }).map((_, i) => <MarqueeItem key={i} text={text} direction={direction} />);
 
   return (
     <section
@@ -98,6 +124,30 @@ const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
           <div className="flex items-center">{renderMarqueeContent('KUIT', 'right')}</div>
           <div className="flex items-center">{renderMarqueeContent('KUIT', 'right')}</div>
         </div>
+      </div>
+
+      <div className="flex-grow relative">
+        <TechStack
+            lottie="/lottie/sixth-introduce/management.lottie"
+            name="Management"
+            fRef={managementGroupRef}
+        />
+        <TechStack
+          lottie="/lottie/sixth-introduce/android.lottie"
+          name="Android"
+          fRef={androidGroupRef}
+        />
+        <TechStack lottie="/lottie/sixth-introduce/web.lottie" name="Web" fRef={webGroupRef} />
+        <TechStack
+          lottie="/lottie/sixth-introduce/server.lottie"
+          name="Server"
+          fRef={serverGroupRef}
+        />
+        <TechStack
+          lottie="/lottie/sixth-introduce/design.lottie"
+          name="PM & Design"
+          fRef={designGroupRef}
+        />
       </div>
 
       <div

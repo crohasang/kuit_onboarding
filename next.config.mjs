@@ -10,6 +10,14 @@ const nextConfig = {
         },
       ],
     },
+    async rewrites() {
+      return [
+        {
+          source: '/lottie/:path*',
+          destination: 'https://d1vuw798i1lfdr.cloudfront.net/:path*',
+        },
+      ];
+    },
   };
   
   export default nextConfig;

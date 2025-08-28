@@ -1,12 +1,10 @@
-// src/app/_components/IntroduceAnimationContainer.tsx
-
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import FirstInteraction from "./FirstInteraction.tsx";
-import SecondInteraction from "./SecondInteraction.tsx";
+import FirstInteraction from './FirstInteraction.tsx';
+import SecondInteraction from './SecondInteraction.tsx';
 import { NUMBER_MORPH_CONFIG, TEXT_ANIMATION_CONFIG } from '../constants/animationConfig.ts';
 import ThirdInteraction from './ThirdInteraction.tsx';
 
@@ -31,25 +29,31 @@ const IntroduceAnimationContainer = () => {
   const digit9Ref = useRef<HTMLSpanElement | null>(null);
   const studyTextRef = useRef<HTMLSpanElement | null>(null);
   const thirdInteractionRef = useRef<HTMLElement | null>(null);
-
-
+  const managementGroupRef = useRef<HTMLDivElement | null>(null);
+  const androidGroupRef = useRef<HTMLDivElement | null>(null);
+  const webGroupRef = useRef<HTMLDivElement | null>(null);
+  const serverGroupRef = useRef<HTMLDivElement | null>(null);
+  const designGroupRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(lettersRef.current, { autoAlpha: 0, y: 10 });
       gsap.set(iLineRef.current, { scaleY: 0, transformOrigin: 'top center' });
       gsap.set(secondInteractionRef.current, { autoAlpha: 0 });
-      gsap.set(thirdInteractionRef.current, { autoAlpha: 0 }); 
+      gsap.set(thirdInteractionRef.current, { autoAlpha: 0 });
 
       const introTl = gsap.timeline({
         onComplete: () => {
           setIsIntroFinished(true);
-        }
+        },
       });
 
       introTl
         .to(lettersRef.current, {
-          autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out',
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power2.out',
           stagger: TEXT_ANIMATION_CONFIG.intro.letterStagger,
         })
         .to(iLineRef.current, {
@@ -67,7 +71,7 @@ const IntroduceAnimationContainer = () => {
         });
     }, containerRef);
     return () => ctx.revert();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (!isIntroFinished) return;
@@ -78,6 +82,11 @@ const IntroduceAnimationContainer = () => {
       gsap.set(projectLinkRef.current, { autoAlpha: 0, y: NUMBER_MORPH_CONFIG.link.initialY });
       gsap.set(curriculumLinkRef.current, { autoAlpha: 0, y: NUMBER_MORPH_CONFIG.link.initialY });
 
+      const techStackRefs = [managementGroupRef, androidGroupRef, webGroupRef, serverGroupRef, designGroupRef];
+      techStackRefs.forEach(ref => {
+        gsap.set(ref.current, { autoAlpha: 0, xPercent: 100 });
+      });
+
       const scrollTl = gsap.timeline();
       scrollTl
         .to(textContainerRef.current, {
@@ -86,9 +95,9 @@ const IntroduceAnimationContainer = () => {
         })
         .to(firstInteractionRef.current, {
           autoAlpha: 0,
-          duration: 0.5, 
+          duration: 0.5,
         })
-        .to({}, { duration: 0.2 }) 
+        .to({}, { duration: 0.2 })
         .to(secondInteractionRef.current, {
           autoAlpha: 1,
           duration: 0.5,
@@ -100,16 +109,24 @@ const IntroduceAnimationContainer = () => {
           duration: 0.5,
           ease: 'power2.in',
         })
-        .to(digit4Ref.current, {
-          x: () => -digit3Ref.current!.offsetWidth,
-          duration: 1,
-          ease: 'power3.inOut',
-        }, '<')
-        .to(studyGroupRef.current, {
-          autoAlpha: 1,
-          duration: 1,
-          ease: 'power3.out',
-        }, '-=0.7')
+        .to(
+          digit4Ref.current,
+          {
+            x: () => -digit3Ref.current!.offsetWidth,
+            duration: 1,
+            ease: 'power3.inOut',
+          },
+          '<',
+        )
+        .to(
+          studyGroupRef.current,
+          {
+            autoAlpha: 1,
+            duration: 1,
+            ease: 'power3.out',
+          },
+          '-=0.7',
+        )
         .to(digit4Ref.current, { autoAlpha: 0, duration: 0.1 }, '-=0.7')
         .to(curriculumLinkRef.current, {
           autoAlpha: 1,
@@ -123,17 +140,32 @@ const IntroduceAnimationContainer = () => {
           duration: 0.5,
           ease: 'power2.in',
         })
-        .to(digit9Ref.current, {
-          scale: 50,
-          duration: 2,
-          ease: 'power2.in',
-          transformOrigin: '75% 25%',
-        }, '<')
-        .to(thirdInteractionRef.current, {
-          autoAlpha: 1,
-          duration: 1,
-          ease: 'power2.in',
-        }, '<+=2.0');
+        .to(
+          digit9Ref.current,
+          {
+            scale: 50,
+            duration: 2,
+            ease: 'power2.in',
+            transformOrigin: '75% 25%',
+          },
+          '<',
+        )
+        .to(
+          thirdInteractionRef.current,
+          {
+            autoAlpha: 1,
+            duration: 1,
+            ease: 'power2.in',
+          },
+          '<+=2.0',
+        );
+
+      techStackRefs.forEach(ref => {
+        scrollTl
+          .to(ref.current, { autoAlpha: 1, xPercent: 0, duration: 1, ease: 'power2.out' })
+          .to({}, { duration: 1.5 })
+          .to(ref.current, { autoAlpha: 0, xPercent: -100, duration: 1, ease: 'power2.in' });
+      });
 
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -172,7 +204,16 @@ const IntroduceAnimationContainer = () => {
           studyTextRef,
         }}
       />
-      <ThirdInteraction refs={{ sectionRef: thirdInteractionRef }} />
+      <ThirdInteraction
+        refs={{
+          sectionRef: thirdInteractionRef,
+          managementGroupRef,
+          androidGroupRef,
+          webGroupRef,
+          serverGroupRef,
+          designGroupRef,
+        }}
+      />
     </div>
   );
 };
