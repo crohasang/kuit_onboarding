@@ -256,7 +256,7 @@ const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 px-10 py-3 text-xl font-bold text-white rounded-full shadow-lg transition-transform transform hover:scale-105"
-            style={{ background: 'linear-gradient(90deg, #7427ff, #002aff)' }}
+            style={{ background: '#000' }}
           >
             KUIT 6기 지원하기
           </a>
