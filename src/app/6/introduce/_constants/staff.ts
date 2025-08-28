@@ -12,11 +12,11 @@ export interface StaffMember {
   }
   
   export const STAFF_DATA: StaffData = {
-    '회장단': [
+    Management: [
       {
         name: '조익성',
         position: '회장',
-        github: 'https://github.com/iksung00',
+        github: 'https://github.com/ikseong00',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/jo-ikseong.jpeg',
       },
       {
