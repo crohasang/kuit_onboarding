@@ -10,6 +10,9 @@ interface SecondInteractionProps {
     digit3Ref: React.RefObject<HTMLSpanElement>;
     digit4Ref: React.RefObject<HTMLSpanElement>;
     projectTextRef: React.RefObject<HTMLSpanElement>;
+    studyDigit4Ref: React.RefObject<HTMLSpanElement>;
+    digit9Ref: React.RefObject<HTMLSpanElement>;
+    studyTextRef: React.RefObject<HTMLSpanElement>;
   };
 }
 
@@ -23,6 +26,9 @@ const SecondInteraction = ({ refs }: SecondInteractionProps) => {
     digit3Ref,
     digit4Ref,
     projectTextRef,
+    studyDigit4Ref,
+    digit9Ref,
+    studyTextRef,
   } = refs;
 
   const numberStyles: React.CSSProperties = {
@@ -60,9 +66,9 @@ const SecondInteraction = ({ refs }: SecondInteractionProps) => {
             <span ref={projectTextRef} style={textStyles}>개의 프로젝트</span>
           </div>
           <div ref={studyGroupRef} className="absolute inset-0 flex items-baseline justify-center">
-            <span style={numberStyles}>4</span>
-            <span style={numberStyles}>9</span>
-            <span style={textStyles}>번의 스터디</span>
+            <span ref={studyDigit4Ref} style={numberStyles}>4</span>
+            <span ref={digit9Ref} style={numberStyles}>9</span>
+            <span ref={studyTextRef} style={textStyles}>번의 스터디</span>
           </div>
         </div>
         <div className="relative h-12">
