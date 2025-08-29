@@ -1,7 +1,7 @@
 import { DotLottiePlayer as Player } from '@dotlottie/react-player';
 import '@dotlottie/react-player/dist/index.css';
 import Image from 'next/image';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaLink } from 'react-icons/fa';
 import { StaffMember } from '../_constants/staff.ts';
 
 const TechStack = ({
@@ -40,6 +40,11 @@ const TechStack = ({
               {member.github && (
                 <a href={member.github} target="_blank" rel="noopener noreferrer">
                   <FaGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-700 hover:text-black" />
+                </a>
+              )}
+              {member.portfolio && (
+                <a href={member.portfolio} target="_blank" rel="noopener noreferrer">
+                  <FaLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-700 hover:text-black" />
                 </a>
               )}
             </div>

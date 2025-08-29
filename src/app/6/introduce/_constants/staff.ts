@@ -4,6 +4,7 @@ export interface StaffMember {
     name: string;
     position: string;
     github?: string;
+    portfolio?: string;
     imageUrl: string;
   }
   
@@ -22,7 +23,7 @@ export interface StaffMember {
       {
         name: '이지유',
         position: '부회장',
-        github: 'https://jeeyoegu0510.notion.site/',
+        portfolio: 'https://jeeyoegu0510.notion.site/',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/lee-jiyoo.jpeg',
       },
       {
@@ -108,11 +109,13 @@ export interface StaffMember {
       {
         name: '김다솜',
         position: 'Design',
+        portfolio: 'https://dasom.myportfolio.com/work',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/kim-dasom.jpeg',
       },
       {
         name: '김효정',
         position: 'Design',
+        portfolio: ' https://clammy-buckthorn-168.notion.site/1fe334782ceb8066b062e745b571d2cf',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/kim-hyojeong.jpeg',
       },
     ],
