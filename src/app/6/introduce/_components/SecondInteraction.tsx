@@ -74,12 +74,12 @@ const SecondInteraction = ({ refs }: SecondInteractionProps) => {
         <div className="relative h-12">
           <div ref={projectLinkRef} className="absolute inset-0 flex justify-center">
             <a href="https://konkuk-kuit.notion.site/kuit" target="_blank" rel="noopener noreferrer" className="hover:underline" style={linkTextStyles}>
-              👨‍💻 지금까지의 프로젝트 확인하기 
+              👨‍💻 지금까지의 프로젝트 확인하기 &rarr;
             </a>
           </div>
           <div ref={curriculumLinkRef} className="absolute inset-0 flex justify-center">
             <a href="https://konkuk-kuit.notion.site/6th-curriculum" target="_blank" rel="noopener noreferrer" className="hover:underline" style={linkTextStyles}>
-              📝 KUIT 6기 커리큘럼 확인하기
+              📝 KUIT 6기 커리큘럼 확인하기 &rarr;
             </a>
           </div>
         </div>
