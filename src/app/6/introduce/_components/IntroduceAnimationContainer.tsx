@@ -50,9 +50,7 @@ const IntroduceAnimationContainer = () => {
           setIsIntroFinished(true);
           gsap.to(scrollDownRef.current, {
             autoAlpha: 1,
-            yoyo: true,
-            repeat: -1,
-            duration: 1.5,
+            duration: 1.5, 
             ease: 'power1.inOut',
           });
         },
@@ -100,7 +98,13 @@ const IntroduceAnimationContainer = () => {
 
       const scrollTl = gsap.timeline();
       scrollTl
-        .to(scrollDownRef.current, { autoAlpha: 0, duration: 0.2, ease: 'power1.in' }, 0)
+        .to(scrollDownRef.current, { autoAlpha: 0, duration: 0.2, ease: 'power1.in',           
+          onComplete: () => {
+          if (scrollDownRef.current) {
+            scrollDownRef.current.style.display = 'none';
+          }
+        } 
+        }, 0)
         .to(textContainerRef.current, {
           scale: TEXT_ANIMATION_CONFIG.scroll.containerFinalScale,
           ease: 'power2.in',
