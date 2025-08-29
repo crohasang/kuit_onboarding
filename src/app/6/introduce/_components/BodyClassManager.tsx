@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect } from 'react';
@@ -6,10 +5,11 @@ import { useEffect } from 'react';
 const BodyClassManager = () => {
   useEffect(() => {
     const className = 'sixth-introduce-page';
-        
-    document.body.classList.add(className);
+    
+    document.documentElement.classList.add(className);
+    
     return () => {
-      document.body.classList.remove(className);
+      document.documentElement.classList.remove(className);
     };
   }, []);
 

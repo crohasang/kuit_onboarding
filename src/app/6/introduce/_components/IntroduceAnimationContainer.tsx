@@ -98,13 +98,20 @@ const IntroduceAnimationContainer = () => {
 
       const scrollTl = gsap.timeline();
       scrollTl
-        .to(scrollDownRef.current, { autoAlpha: 0, duration: 0.2, ease: 'power1.in',           
-          onComplete: () => {
-          if (scrollDownRef.current) {
-            scrollDownRef.current.style.display = 'none';
-          }
-        } 
-        }, 0)
+        .to(
+          scrollDownRef.current,
+          {
+            autoAlpha: 0,
+            duration: 0.2,
+            ease: 'power1.in',
+            onComplete: () => {
+              if (scrollDownRef.current) {
+                scrollDownRef.current.style.display = 'none';
+              }
+            },
+          },
+          0,
+        )
         .to(textContainerRef.current, {
           scale: TEXT_ANIMATION_CONFIG.scroll.containerFinalScale,
           ease: 'power2.in',
@@ -128,7 +135,7 @@ const IntroduceAnimationContainer = () => {
         .to(
           digit4Ref.current,
           {
-            x: () => -digit3Ref.current!.offsetWidth,
+            x: () => (digit3Ref.current ? -digit3Ref.current.offsetWidth : 0),
             duration: 1,
             ease: 'power3.inOut',
           },
@@ -189,21 +196,26 @@ const IntroduceAnimationContainer = () => {
         ease: 'power2.out',
       });
 
+      // --- 수정된 부분 ---
+
+      // 1. 애니메이션 제어용 ScrollTrigger (pin 없음)
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
         end: '+=12000',
-        pin: true,
         scrub: 1,
         animation: scrollTl,
-        onLeave: () => {
-          document.body.style.overflow = 'hidden';
-        },
-        onEnterBack: () => {
-          document.body.style.overflow = '';
-        },
       });
+
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top top',
+        end: 'bottom+=10000% top',
+        pin: true,
+      });
+      
     }, containerRef);
+
     return () => {
       document.body.style.overflow = '';
       ctx.revert();

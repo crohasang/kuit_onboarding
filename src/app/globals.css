@@ -10,9 +10,14 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
-body.sixth-introduce-page {
+html.sixth-introduce-page {
   background-color: black;
-  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+html.sixth-introduce-page::-webkit-scrollbar {
+  display: none;
 }
 
 
