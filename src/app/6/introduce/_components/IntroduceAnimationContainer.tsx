@@ -17,6 +17,7 @@ const IntroduceAnimationContainer = () => {
   const textContainerRef = useRef<HTMLDivElement | null>(null);
   const lettersRef = useRef<HTMLSpanElement[]>([]);
   const iLineRef = useRef<HTMLDivElement | null>(null);
+  const scrollDownRef = useRef<HTMLDivElement | null>(null); // scrollDownRef 추가
   const secondInteractionRef = useRef<HTMLElement | null>(null);
   const projectGroupRef = useRef<HTMLDivElement | null>(null);
   const studyGroupRef = useRef<HTMLDivElement | null>(null);
@@ -42,10 +43,18 @@ const IntroduceAnimationContainer = () => {
       gsap.set(iLineRef.current, { scaleY: 0, transformOrigin: 'top center' });
       gsap.set(secondInteractionRef.current, { autoAlpha: 0 });
       gsap.set(thirdInteractionRef.current, { autoAlpha: 0 });
+      gsap.set(scrollDownRef.current, { autoAlpha: 0 });
 
       const introTl = gsap.timeline({
         onComplete: () => {
           setIsIntroFinished(true);
+          gsap.to(scrollDownRef.current, {
+            autoAlpha: 1,
+            yoyo: true,
+            repeat: -1,
+            duration: 1.5,
+            ease: 'power1.inOut',
+          });
         },
       });
 
@@ -91,6 +100,7 @@ const IntroduceAnimationContainer = () => {
 
       const scrollTl = gsap.timeline();
       scrollTl
+        .to(scrollDownRef.current, { autoAlpha: 0, duration: 0.2, ease: 'power1.in' }, 0)
         .to(textContainerRef.current, {
           scale: TEXT_ANIMATION_CONFIG.scroll.containerFinalScale,
           ease: 'power2.in',
@@ -182,7 +192,6 @@ const IntroduceAnimationContainer = () => {
         pin: true,
         scrub: 1,
         animation: scrollTl,
-        // 아래 콜백 추가
         onLeave: () => {
           document.body.style.overflow = 'hidden';
         },
@@ -192,13 +201,18 @@ const IntroduceAnimationContainer = () => {
       });
     }, containerRef);
     return () => {
-      document.body.style.overflow = ''; // 컴포넌트 unmount 시 스크롤 복원
+      document.body.style.overflow = '';
       ctx.revert();
     };
   }, [isIntroFinished]);
 
   return (
     <div ref={containerRef} className="relative h-screen bg-black">
+      <div
+        ref={scrollDownRef}
+        className="absolute top-[20vh] left-1/2 -translate-x-1/2 text-white text-xs sm:text-sm md:text-base font-light z-10"      >
+        아래로 스크롤하세요
+      </div>
       <FirstInteraction
         refs={{
           mainRef: firstInteractionRef,
