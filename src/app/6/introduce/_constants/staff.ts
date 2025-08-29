@@ -97,11 +97,13 @@ export interface StaffMember {
       {
         name: '김재훈',
         position: 'PM',
+        portfolio: ' https://drive.google.com/file/d/1xSEd0mdI3OaL8HuayFrogj2uqiW7ZmyG/view?usp=sharing',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/kim-jaehoon.jpeg',
       },
       {
         name: '김효민',
         position: 'PM',
+        portfolio: 'https://drive.google.com/file/d/1q1XJ1elqdqXPV3cC_jmf58M3O2iCNbal/view?usp=sharing',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/kim-hyomin.jpeg',
       },
     ],
