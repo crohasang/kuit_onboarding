@@ -69,7 +69,7 @@ export interface StaffMember {
       {
         name: '최준서',
         position: 'Web',
-        github: 'https://github.com/JunSeochoi',
+        github: 'https://github.com/evan7484',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/choi-joonseo.jpeg',
       },
     ],
