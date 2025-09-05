@@ -97,7 +97,7 @@ export interface StaffMember {
       {
         name: '김재훈',
         position: 'PM',
-        portfolio: ' https://drive.google.com/file/d/1xSEd0mdI3OaL8HuayFrogj2uqiW7ZmyG/view?usp=sharing',
+        portfolio: 'https://shrub-crowd-46c.notion.site/2276196331d2804989f5f9b37268c2ed?source=copy_link',
         imageUrl: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/kim-jaehoon.jpeg',
       },
       {
