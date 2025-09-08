@@ -25,6 +25,9 @@ const config: Config = {
       colors: {
         kuit: '#4FE570',
       },
+      screens: {
+        'short': { 'raw': '(max-height: 700px)' },
+      },
     },
   },
   plugins: [],

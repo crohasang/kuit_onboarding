@@ -63,7 +63,7 @@ const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
       style={{ visibility: 'hidden' }}
     >
       <div
-        className="w-full h-16 md:h-28 flex items-center mt-8"
+        className="w-full h-16 md:h-28 flex items-center mt-8 short:h-10"
         style={{ background: 'linear-gradient(270deg, #7427ff, #002aff)' }}
       >
         <div ref={topMarqueeRef} className="flex flex-nowrap">
@@ -124,7 +124,7 @@ const ThirdInteraction = ({ refs }: ThirdInteractionProps) => {
       </div>
 
       <div
-        className="w-full h-16 md:h-28 flex items-center mb-8"
+        className="w-full h-16 md:h-28 flex items-center mb-8 short:h-10"
         style={{ background: 'linear-gradient(90deg, #7427ff, #002aff)' }}
       >
         <div ref={bottomMarqueeRef} className="flex flex-nowrap">
