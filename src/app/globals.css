@@ -10,6 +10,17 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+html.sixth-introduce-page {
+  background-color: black;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+html.sixth-introduce-page::-webkit-scrollbar {
+  display: none;
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
