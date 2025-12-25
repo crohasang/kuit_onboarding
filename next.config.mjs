@@ -8,6 +8,12 @@ const nextConfig = {
           port: '',
           pathname: '/sixth-introduce/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'd1vuw798i1lfdr.cloudfront.net',
+          port: '',
+          pathname: '/sixth-hackathon/**',
+        },
       ],
     },
     async rewrites() {
