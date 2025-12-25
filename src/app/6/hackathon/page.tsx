@@ -79,7 +79,7 @@ export default function HackathonPage() {
           {[
             { title: "Location", subtitle: "개최 장소", content: "건국대학교 신공학관\n(상세 장소 추후 공지)" },
             { title: "Qualification", subtitle: "참가 자격", content: "개발에 관심을 가지고 있는 누구나" },
-            { title: "Positions", subtitle: "참가 가능 파트", content: "기획\n디자인\nAndroid\nWeb Frontend\nServer (Spring)" }
+            { title: "Positions", subtitle: "참가 가능 파트", content: "기획/디자인\nAndroid(Jetpack Compose)\nWeb Frontend\nServer (Spring)" }
           ].map((item, idx) => (
             <div key={idx} className="group p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-kuit-green/30 transition-all duration-300 hover:-translate-y-2 shadow-lg">
               <h4 className="text-xs text-kuit-green font-bold tracking-widest uppercase mb-3 opacity-80">{item.title}</h4>
@@ -137,6 +137,57 @@ export default function HackathonPage() {
               />
             </div>
           </div>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            {
+              title: "해커톤 주제",
+              content: "팀 발표와 동시에 공개됩니다.",
+              icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              )
+            },
+            {
+              title: "참가비",
+              content: "- KUIT 6기 부원의 경우 5,000원입니다.\n- 그 외의 경우(유령부원 포함) 10,000원입니다.",
+              icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )
+            },
+            {
+              title: "식사 제공 여부",
+              content: "석식과 야식이 제공될 예정입니다.",
+              icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h18v18H3V3zm14 10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h8a2 2 0 012 2v6z M7 8h8M7 12h8" />
+                </svg>
+              )
+            },
+            {
+              title: "튜토리얼 제공 여부",
+              content: "협업이 처음이신 참여자 분들을 위한 기획/디자인/협업 관련 튜토리얼 및 예시 템플릿이 팀 매칭 직후 제공될 예정입니다.",
+              icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              )
+            }
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-start gap-4 p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all duration-300">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-kuit-green/20 flex items-center justify-center text-kuit-green">
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-white">{item.title}</h3>
+                <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">{item.content}</p>
+              </div>
+            </div>
+          ))}
         </section>
       </div>
     </main>
