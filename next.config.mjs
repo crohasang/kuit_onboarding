@@ -13,6 +13,10 @@ const nextConfig = {
     async rewrites() {
       return [
         {
+          source: '/lottie/seventh-introduce/:path*',
+          destination: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/:path*',
+        },
+        {
           source: '/lottie/:path*',
           destination: 'https://d1vuw798i1lfdr.cloudfront.net/:path*',
         },

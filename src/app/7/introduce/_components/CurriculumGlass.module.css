@@ -1,0 +1,82 @@
+.sectionBg {
+  position: relative;
+}
+
+.sectionBg::before,
+.sectionBg::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(36px);
+  z-index: 0;
+}
+
+.sectionBg::before {
+  width: 260px;
+  height: 260px;
+  left: -70px;
+  top: 80px;
+  background: radial-gradient(circle, rgba(69, 204, 99, 0.24) 0%, rgba(69, 204, 99, 0) 70%);
+}
+
+.sectionBg::after {
+  width: 300px;
+  height: 300px;
+  right: -90px;
+  top: 0;
+  background: radial-gradient(circle, rgba(64, 186, 255, 0.2) 0%, rgba(64, 186, 255, 0) 72%);
+}
+
+.noiseLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.2;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 0.4px, transparent 0.4px);
+  background-size: 2px 2px;
+  mix-blend-mode: soft-light;
+}
+
+.glassPanel {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.46));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.36);
+}
+
+.glassPanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+  opacity: 0.34;
+}
+
+.glassMini {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glassMini:hover {
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+@supports not ((backdrop-filter: blur(12px))) {
+  .glassPanel,
+  .glassMini {
+    background: rgba(15, 18, 28, 0.78);
+  }
+}
