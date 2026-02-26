@@ -29,12 +29,18 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const isSixthIntroducePage = pathname === '/6/introduce';
+  const isSeventhIntroducePage = pathname === '/7/introduce';
+  const isImmersiveIntroducePage = isSixthIntroducePage || isSeventhIntroducePage;
 
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <body
         className={`${pretendard.className} ${
-          isSixthIntroducePage ? 'sixth-introduce-page' : ''
+          isImmersiveIntroducePage
+          ? isSixthIntroducePage
+            ? 'sixth-introduce-page'
+            : 'seventh-introduce-page'
+          : ''
         }`}
       >
         <ClientLayout>{children}</ClientLayout>
