@@ -155,16 +155,14 @@ export default function IntroduceAnimationContainer() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <div
-        ref={curriculumRef}
-        className="fixed inset-0 z-[110] flex items-center justify-center px-2 sm:px-4"
-      >
-        <div className="w-full max-w-5xl">
-          <CurriculumSection />
+      <div ref={curriculumRef} className="fixed inset-0 z-[110] overflow-hidden">
+        <div className="flex h-full w-full items-stretch justify-stretch">
+          <div className="h-full w-full">
+            <CurriculumSection />
+          </div>
         </div>
       </div>
     </div>

@@ -29,8 +29,8 @@ type PartLottieStripProps = {
 
 export default function PartLottieStrip({ activePart, onChange }: PartLottieStripProps) {
   return (
-    <div className="-mx-1 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
-      <div className="flex min-w-max gap-2 sm:grid sm:min-w-0 sm:grid-cols-5">
+    <div className="mt-1">
+      <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
         {PART_ORDER.map((part) => {
           const isActive = activePart === part;
 
@@ -39,16 +39,20 @@ export default function PartLottieStrip({ activePart, onChange }: PartLottieStri
               key={part}
               type="button"
               onClick={() => onChange(part)}
-              className={`${styles.glassMini} w-[86px] shrink-0 rounded-md p-2 transition-all sm:w-auto ${
+              className={`${styles.glassMini} min-w-0 rounded-md px-1 py-1.5 transition-all sm:py-2 ${
                 isActive
                   ? 'border-[#45cc63] bg-[#45cc63]/14 shadow-[0_0_0_1px_rgba(69,204,99,0.25)_inset]'
                   : 'hover:border-white/35'
               }`}
             >
-              <div className="mx-auto h-12 w-12 sm:h-14 sm:w-14">
+              <div className="mx-auto h-8 w-8 sm:h-10 sm:w-10">
                 <Player src={LOTTIE_BY_PART[part]} autoplay loop style={{ width: '100%', height: '100%' }} />
               </div>
-              <div className={`mt-1 text-[10px] font-bold tracking-[0.08em] sm:text-[11px] ${isActive ? 'text-[#45cc63]' : 'text-white/72'}`}>
+              <div
+                className={`mt-0.5 truncate px-0.5 text-center text-[9px] font-bold tracking-[0.04em] sm:text-[10px] ${
+                  isActive ? 'text-[#45cc63]' : 'text-white/72'
+                }`}
+              >
                 {LABEL_BY_PART[part]}
               </div>
             </button>

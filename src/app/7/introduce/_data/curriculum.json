@@ -30,7 +30,7 @@
     { "week": 6, "title": "DB + 데이터 모델링" },
     { "week": 7, "title": "JPA2 + REST API" },
     { "week": 8, "title": "인증, 인가, JWT" },
-    { "week": 9, "title": "NGINX / Deployment / TLS" }
+    { "week": 9, "title": "Deployment" }
   ],
   "pm": [
     { "week": 1, "title": "프로젝트 개요 / PM 개요" },
