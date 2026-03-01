@@ -1,0 +1,207 @@
+[
+  {
+    "batch": "6기",
+    "name": "Archiveat",
+    "description": "흩어진 지식을 성장의 자산으로, AI 기반 지식 성장 솔루션. 공유로 간편 수집하고 AI가 분류해 맞춤형 뉴스레터로 재전달."
+  },
+  {
+    "batch": "6기",
+    "name": "Chozy",
+    "description": "모든 저가 플랫폼을 한 눈에 비교하는 서비스. 메타검색과 커뮤니티 기반으로 최저가 탐색을 돕는 Chozy."
+  },
+  {
+    "batch": "6기",
+    "name": "POSiT",
+    "description": "30초면 충분한 고민 해결과 제안. 지도 기반 고민 탐색과 아이디어 제출, 채택 쿠폰 보상을 제공."
+  },
+  {
+    "batch": "6기",
+    "name": "OFF",
+    "description": "AI 기반 프로젝트 기획과 파트너 매칭 올인원 플랫폼. AI 자동 Task 추천과 실시간 소통으로 기획 단계를 단축."
+  },
+  {
+    "batch": "6기",
+    "name": "애프터노트",
+    "description": "삶의 마지막을 존엄하게 정리하고 남겨진 이들이 안심할 수 있도록 돕는 디지털 유산 정리 서비스."
+  },
+  {
+    "batch": "6기",
+    "name": "캠넥트",
+    "description": "검증된 대학 동문 네트워킹 앱. 동문 커피챗, 팀빌딩, 포인트 기반 기프티콘 교환 기능 제공."
+  },
+  {
+    "batch": "6기",
+    "name": "캠퍼스폼",
+    "description": "동아리 리크루팅을 한 번에. 지원자 자동 분류, 스마트 면접 시간표, 결과 요약과 문자 템플릿 제공."
+  },
+  {
+    "batch": "5기",
+    "name": "냠코치",
+    "description": "픽셀 친구들과 함께하는 다이어트. 지루함은 빼고 귀여움은 더한 다이어트 서비스."
+  },
+  {
+    "batch": "5기",
+    "name": "당번",
+    "description": "다함께 쓰는 스마트 체크리스트. 플레이스/청소/당번 지정과 알림함 기반 소통을 지원."
+  },
+  {
+    "batch": "5기",
+    "name": "MODI",
+    "description": "하루의 순간을 생생하게 기록하는 친구. AI 기록 자동 작성, 커스텀, 지도/월간통계, 리마인드 알림 제공."
+  },
+  {
+    "batch": "5기",
+    "name": "메디케어콜",
+    "description": "AI 케어콜 기반 시니어 건강 모니터링 서비스. 질환/복약 기반 맞춤 케어콜과 통화 요약·통계, 실시간 모니터링 제공."
+  },
+  {
+    "batch": "5기",
+    "name": "MORU",
+    "description": "루틴 만들고 공유하고 실천까지 한 번에. 루틴 생성/탐색/몰입 실천/인사이트를 제공하는 루틴 관리 서비스."
+  },
+  {
+    "batch": "5기",
+    "name": "Block Guard",
+    "description": "AI 보이스피싱 사전예방 서비스. 의심상황 분석, 긴급 신고 대응 가이드, 시뮬레이션 학습 제공."
+  },
+  {
+    "batch": "5기",
+    "name": "Cork Charge",
+    "description": "차세대 주류문화 서비스. 콜키지 맵, 콜키지 전환 요청, 주류 예약/연동 기능 제공."
+  },
+  {
+    "batch": "5기",
+    "name": "MeetCha",
+    "description": "간편하게 미팅 일정을 잡는 서비스. 구글 캘린더 연동, 자동 시작시간 결정, 미팅 후 회고 작성."
+  },
+  {
+    "batch": "4기",
+    "name": "책산책",
+    "description": "감상을 함께하는 기록형 독서 플랫폼. 읽기 전 선택, 읽는 중 기록 공유, 읽은 후 아카이빙 제공."
+  },
+  {
+    "batch": "4기",
+    "name": "두리몽",
+    "description": "개인 맞춤형 심리 케어 서비스. 성장형 캐릭터, AI 상담 챗봇, 자가진단, 칼럼 제공."
+  },
+  {
+    "batch": "4기",
+    "name": "Sweet Balance",
+    "description": "2030을 위한 음료 속 당 관리 앱. 통계/브랜드 음료 정보/섭취 기록과 시럽 조절 데이터 관리."
+  },
+  {
+    "batch": "4기",
+    "name": "모아모아",
+    "description": "소비 관리와 절약 습관 만들기. 친구와 챌린지를 통해 재미있게 절약 목표를 달성."
+  },
+  {
+    "batch": "4기",
+    "name": "찾아유",
+    "description": "유기동물 종합 앱. 유기동물 조회, 실종 신고, 관련 아티클 등 정보를 한 곳에서 제공."
+  },
+  {
+    "batch": "4기",
+    "name": "플레이아데스",
+    "description": "별과 우주정거장을 모티브로 한 소셜 커뮤니티 앱. 캐릭터 커스텀, 투데이 리포트, 친구/정거장 기능 제공."
+  },
+  {
+    "batch": "4기",
+    "name": "BARO",
+    "description": "장소와 시간을 바로 정해 만나는 웹서비스. 주변 정보와 일정 기반 모임 생성, 자동 시간 체크, 조건 맞는 장소 탐색."
+  },
+  {
+    "batch": "4기",
+    "name": "Road Journey",
+    "description": "장·단기 목표 관리 앱. 목표 달성 보상, 프로필 꾸미기, 친구와 공유로 동기부여 제공."
+  },
+  {
+    "batch": "3기",
+    "name": "아워메뉴",
+    "description": "5초만에 메뉴를 추천해주는 OURMENU."
+  },
+  {
+    "batch": "3기",
+    "name": "잇픽",
+    "description": "키워드 랭킹 커뮤니티, 잇픽."
+  },
+  {
+    "batch": "3기",
+    "name": "MAPU",
+    "description": "지도에 기록을 더하다, MAPU."
+  },
+  {
+    "batch": "3기",
+    "name": "리메틱",
+    "description": "찐 팬이 남긴 진짜 후기, REMATIC."
+  },
+  {
+    "batch": "3기",
+    "name": "스페이스",
+    "description": "단 하나의 동아리/팀프로젝트 커뮤니티, Space."
+  },
+  {
+    "batch": "3기",
+    "name": "헬스메이트",
+    "description": "4050 세대를 위한 셀프 건강진단 & 건강케어 서비스, 헬스메이트."
+  },
+  {
+    "batch": "3기",
+    "name": "아가랑",
+    "description": "생성형 AI 기반 가족 공동 태교 서비스, 아가랑."
+  },
+  {
+    "batch": "2기",
+    "name": "집콕",
+    "description": "현명하게 내 자취방을 ‘콕’하다, 집콕."
+  },
+  {
+    "batch": "2기",
+    "name": "MajorFolio",
+    "description": "우리끼리 만드는 과제장터, 메이저폴리오."
+  },
+  {
+    "batch": "2기",
+    "name": "HiBuy",
+    "description": "리워드형 키우기 게임을 활용한 건강기능식품 이커머스 플랫폼, HiBuy."
+  },
+  {
+    "batch": "2기",
+    "name": "PEOPLEHERE",
+    "description": "평범했던 일상이 특별한 여행이 되는 법, PEOPLEHERE."
+  },
+  {
+    "batch": "2기",
+    "name": "MealPlanB",
+    "description": "간편하게 식단을 추천받을 수 있는 서비스, Meal Plan B."
+  },
+  {
+    "batch": "2기",
+    "name": "MOCU",
+    "description": "모두의 모바일 쿠폰, MOCU."
+  },
+  {
+    "batch": "2기",
+    "name": "ChatDiary",
+    "description": "가장 쉬운 일기 습관, Chat Diary."
+  },
+  {
+    "batch": "1기",
+    "name": "COUPHONE",
+    "description": "모바일 쿠폰을 한 데 모아 적립/사용을 돕는 모바일 지갑, COUPHONE."
+  },
+  {
+    "batch": "1기",
+    "name": "Beering",
+    "description": "나만의 맥주 취향 아카이빙 서비스, Beering."
+  },
+  {
+    "batch": "1기",
+    "name": "방울이",
+    "description": "내가 키우는 뽀모도로, 방울이."
+  },
+  {
+    "batch": "1기",
+    "name": "CoNet",
+    "description": "약속 시간 정하기에 집중한 서비스. 시간 공유 시간표, 히스토리, 캘린더로 약속의 시작부터 기록까지 지원."
+  }
+]

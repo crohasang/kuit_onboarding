@@ -20,6 +20,16 @@ html.sixth-introduce-page::-webkit-scrollbar {
   display: none;
 }
 
+html.seventh-introduce-page {
+  background-color: #04050b;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+html.seventh-introduce-page::-webkit-scrollbar {
+  display: none;
+}
+
 
 @layer utilities {
   .text-balance {

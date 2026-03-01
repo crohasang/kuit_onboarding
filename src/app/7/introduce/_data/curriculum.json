@@ -1,0 +1,57 @@
+{
+  "android": [
+    { "week": 1, "title": "코틀린, 안드로이드 기초" },
+    { "week": 2, "title": "리스트 구조 UI, 컴포넌트 제작, State 관리" },
+    { "week": 3, "title": "Side Effect, Jetpack Navigation" },
+    { "week": 4, "title": "컴포넌트화 및 UI단 설계, State Hoisting" },
+    { "week": 5, "title": "ViewModel, Hilt" },
+    { "week": 6, "title": "Coroutine, DataStore, Repository 패턴" },
+    { "week": 7, "title": "Retrofit2를 활용한 서버 통신" },
+    { "week": 8, "title": "반응형 프로그래밍" },
+    { "week": 9, "title": "프로젝트 기초 세팅, Git 저장소 세팅" }
+  ],
+  "web": [
+    { "week": 1, "title": "협업 & 웹사이트 구성" },
+    { "week": 2, "title": "HTML & CSS" },
+    { "week": 3, "title": "JavaScript" },
+    { "week": 4, "title": "React 프로젝트 설정 및 기초" },
+    { "week": 5, "title": "React로 생각하기" },
+    { "week": 6, "title": "Typescript" },
+    { "week": 7, "title": "라우팅 및 컴포넌트 스타일링" },
+    { "week": 8, "title": "상태 관리" },
+    { "week": 9, "title": "Data Fetching" }
+  ],
+  "server": [
+    { "week": 1, "title": "자바 기초 / 객체지향 / 테스트" },
+    { "week": 2, "title": "자바 심화(JVM, GC)" },
+    { "week": 3, "title": "네트워크(Tomcat)" },
+    { "week": 4, "title": "서블릿, Spring MVC" },
+    { "week": 5, "title": "Spring Boot + (트랜잭션)" },
+    { "week": 6, "title": "DB + 데이터 모델링" },
+    { "week": 7, "title": "JPA2 + REST API" },
+    { "week": 8, "title": "인증, 인가, JWT" },
+    { "week": 9, "title": "Deployment" }
+  ],
+  "pm": [
+    { "week": 1, "title": "프로젝트 개요 / PM 개요" },
+    { "week": 2, "title": "서비스 기획 구체화하기 (아이데이션 대면세션)" },
+    { "week": 3, "title": "창업 세션" },
+    { "week": 4, "title": "화면 개요 구성하기" },
+    { "week": 5, "title": "디자이너 협업 준비하기 (디자이너 모집글 작성하기 + 협업세팅)" },
+    { "week": 6, "title": "(중간고사이후) 화면 개요 구성하기 [DE] 서비스 컨셉 구상하기" },
+    { "week": 7, "title": "프로토타입 제작하기" },
+    { "week": 8, "title": "개발자 협업 준비하기" },
+    { "week": 9, "title": "최종 기획설명회 준비하기" }
+  ],
+  "designer": [
+    { "week": 1, "title": "[Design Seminar & OT] UX/UI 이해와 스터디 안내" },
+    { "week": 2, "title": "[Design Seminar] Deep Dive UX/UI 분석 - 1" },
+    { "week": 3, "title": "[Design Seminar] Deep Dive UX/UI 분석 - 2" },
+    { "week": 4, "title": "[Design Seminar] Deep Dive UX/UI 분석 - 3" },
+    { "week": 5, "title": "[Design Seminar] Deep Dive UX/UI 분석 - 4" },
+    { "week": 6, "title": "PM-Designer 팀 매칭" },
+    { "week": 7, "title": "디자인 시스템 구축하기 / 화면 디자인 진행" },
+    { "week": 8, "title": "화면 디자인 진행 / 프로토타입 제작하기" },
+    { "week": 9, "title": "최종 기획설명회 준비" }
+  ]
+}

@@ -10,11 +10,13 @@ export default function ClientLayout({
 }) {
   const pathname = usePathname();
   const isSixthIntroducePage = pathname === '/6/introduce';
+  const isSeventhIntroducePage = pathname === '/7/introduce';
+  const isImmersiveIntroducePage = isSixthIntroducePage || isSeventhIntroducePage;
 
   return (
     <div className="relative min-h-screen">
-      {!isSixthIntroducePage && <Background pathname={pathname} />}
-      <div className={!isSixthIntroducePage ? 'relative z-10' : ''}>
+      {!isImmersiveIntroducePage && <Background pathname={pathname} />}
+      <div className={!isImmersiveIntroducePage ? 'relative z-10' : ''}>
         <main>{children}</main>
       </div>
     </div>
