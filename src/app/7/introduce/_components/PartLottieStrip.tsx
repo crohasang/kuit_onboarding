@@ -10,7 +10,7 @@ const LOTTIE_BY_PART: Record<PartKey, string> = {
   android: '/lottie/seventh-introduce/android.lottie',
   server: '/lottie/seventh-introduce/server.lottie',
   pm: '/lottie/seventh-introduce/management.lottie',
-  designer: '/lottie/seventh-introduce/design.lottie',
+  designer: '/lottie/sixth-introduce/design.lottie',
 };
 
 const LABEL_BY_PART: Record<PartKey, string> = {
@@ -46,7 +46,13 @@ export default function PartLottieStrip({ activePart, onChange }: PartLottieStri
               }`}
             >
               <div className="mx-auto h-8 w-8 sm:h-10 sm:w-10">
-                <Player src={LOTTIE_BY_PART[part]} autoplay loop style={{ width: '100%', height: '100%' }} />
+                <Player
+                  key={part}
+                  src={LOTTIE_BY_PART[part]}
+                  autoplay
+                  loop
+                  style={{ width: '100%', height: '100%' }}
+                />
               </div>
               <div
                 className={`mt-0.5 truncate px-0.5 text-center text-[9px] font-bold tracking-[0.04em] sm:text-[10px] ${

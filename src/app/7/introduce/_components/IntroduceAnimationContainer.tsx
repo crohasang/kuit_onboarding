@@ -8,7 +8,6 @@ const REEL_DIGITS = [...Array.from({ length: 30 }, (_, i) => i % 10), 7];
 
 export default function IntroduceAnimationContainer() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const fireworksRef = useRef<HTMLDivElement | null>(null);
   const slotStageRef = useRef<HTMLDivElement | null>(null);
   const curriculumRef = useRef<HTMLDivElement | null>(null);
   const reelRefs = useRef<HTMLDivElement[]>([]);
@@ -26,40 +25,6 @@ export default function IntroduceAnimationContainer() {
         gsap.set(reelRefs.current, { y: 0 });
         gsap.set(curriculumRef.current, { autoAlpha: 0, y: 120 });
 
-        const burst = (xPercent: number, yPercent: number) => {
-          const root = fireworksRef.current;
-          if (!root) return;
-
-          const count = 34;
-          for (let i = 0; i < count; i += 1) {
-            const particle = document.createElement('span');
-            particle.className = 'absolute h-[8px] w-[8px] rounded-full';
-            particle.style.left = `${xPercent}%`;
-            particle.style.top = `${yPercent}%`;
-            particle.style.backgroundColor = i % 2 === 0 ? '#45cc63' : '#ffffff';
-            root.appendChild(particle);
-
-            const angle = (Math.PI * 2 * i) / count;
-            const distance = 95 + Math.random() * 130;
-            const dx = Math.cos(angle) * distance;
-            const dy = Math.sin(angle) * distance;
-
-            gsap.fromTo(
-              particle,
-              { x: 0, y: 0, autoAlpha: 1, scale: 0.7 },
-              {
-                x: dx,
-                y: dy,
-                autoAlpha: 0,
-                scale: 0,
-                duration: 1,
-                ease: 'power2.out',
-                onComplete: () => particle.remove(),
-              },
-            );
-          }
-        };
-
         const tl = gsap.timeline();
 
         reelRefs.current.forEach((reel, index) => {
@@ -69,32 +34,28 @@ export default function IntroduceAnimationContainer() {
             reel,
             {
               y: approachY,
-              duration: 1,
+              duration: 0.65,
               ease: 'none',
             },
-            index * 0.28,
+            index * 0.18,
           ).to(
             reel,
             {
               y: finalY,
-              duration: 0.85,
+              duration: 0.55,
               ease: 'expo.out',
             },
-            index * 0.28 + 1,
+            index * 0.18 + 0.65,
           );
         });
 
-        tl.call(() => {
-          burst(34, 40);
-          burst(66, 40);
-        })
-          .to({}, { duration: 1 })
+        tl.to({}, { duration: 0.45 })
           .to(
             slotStageRef.current,
             {
               yPercent: -120,
               autoAlpha: 0,
-              duration: 0.7,
+              duration: 0.45,
               ease: 'power2.inOut',
             },
             'sync',
@@ -104,7 +65,7 @@ export default function IntroduceAnimationContainer() {
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.7,
+              duration: 0.45,
               ease: 'power2.inOut',
             },
             'sync',
@@ -123,7 +84,6 @@ export default function IntroduceAnimationContainer() {
       </div>
 
       <div ref={containerRef} className="fixed inset-0 z-[100] flex items-center justify-center bg-transparent">
-        <div ref={fireworksRef} className="pointer-events-none absolute inset-0" />
         <div className="relative flex h-full w-full items-center justify-center">
           <div ref={slotStageRef} className="absolute top-[40%] -translate-y-1/2">
             <div

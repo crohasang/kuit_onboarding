@@ -38,6 +38,7 @@ function toCardId(item: StaffItem, index: number) {
 export default function StaffSection() {
   const [activeTab, setActiveTab] = useState<StaffPart>('management');
   const [flippedMap, setFlippedMap] = useState<Record<string, boolean>>({});
+  const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
 
   const filteredStaff = useMemo(() => {
     return staffData.filter((item) => item.part === activeTab);
@@ -45,6 +46,7 @@ export default function StaffSection() {
 
   useEffect(() => {
     setFlippedMap({});
+    setLoadedMap({});
   }, [activeTab]);
 
   const toggleFlip = (id: string) => {
@@ -83,6 +85,7 @@ export default function StaffSection() {
             {filteredStaff.map((item, index) => {
               const id = toCardId(item, index);
               const isFlipped = Boolean(flippedMap[id]);
+              const isLoaded = Boolean(loadedMap[id]);
 
               return (
                 <button
@@ -96,12 +99,28 @@ export default function StaffSection() {
                     style={{ transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
                   >
                     <div className="absolute inset-0 overflow-hidden rounded-lg border border-white/20 bg-[#2f343b] [backface-visibility:hidden]">
+                      {!isLoaded ? (
+                        <div className="absolute inset-0 z-[1] animate-pulse bg-gradient-to-br from-[#4f5560] via-[#626a76] to-[#4f5560]" />
+                      ) : null}
                       <Image
                         src={item.image || STAFF_PLACEHOLDER_SRC}
                         alt={item.name}
                         fill
-                        sizes="(max-width: 640px) 50vw, 33vw"
+                        loading="lazy"
+                        sizes="(max-width: 640px) 48vw, 170px"
                         className={item.image ? 'object-cover object-top' : 'object-cover object-center'}
+                        onLoadingComplete={() =>
+                          setLoadedMap((prev) => {
+                            if (prev[id]) return prev;
+                            return { ...prev, [id]: true };
+                          })
+                        }
+                        onError={() =>
+                          setLoadedMap((prev) => {
+                            if (prev[id]) return prev;
+                            return { ...prev, [id]: true };
+                          })
+                        }
                       />
                       <div className="absolute inset-x-0 bottom-0 bg-black/60 px-2.5 py-2 text-left">
                         <div className="flex items-end justify-between gap-2">

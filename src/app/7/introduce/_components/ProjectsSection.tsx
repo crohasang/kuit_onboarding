@@ -12,7 +12,7 @@ type ProjectItem = {
 
 const projects = projectsJson as ProjectItem[];
 const ROW_BATCH_ORDER = ['1기', '2기', '3기', '4기', '5기', '6기'] as const;
-const MIN_BASE_CARDS = 6;
+const MIN_BASE_CARDS = 4;
 
 function buildBaseItems(items: ProjectItem[]) {
   if (items.length === 0) return [];
@@ -20,7 +20,11 @@ function buildBaseItems(items: ProjectItem[]) {
   return Array.from({ length: copies }).flatMap(() => items);
 }
 
-export default function ProjectsSection() {
+type ProjectsSectionProps = {
+  isActive?: boolean;
+};
+
+export default function ProjectsSection({ isActive = true }: ProjectsSectionProps) {
   const rows = useMemo(() => {
     return ROW_BATCH_ORDER.map((batch) => {
       const items = projects.filter((project) => project.batch === batch);
@@ -47,10 +51,16 @@ export default function ProjectsSection() {
                   {row.items.length > 0 ? (
                     <motion.div
                       className="flex h-full w-max transform-gpu items-stretch gap-2 will-change-transform sm:gap-2.5"
-                      animate={{
-                        x: rowIndex % 2 === 0 ? ['0%', '-50%'] : ['-50%', '0%'],
-                      }}
-                      transition={{ duration: 30 + rowIndex * 2, ease: 'linear', repeat: Infinity }}
+                      animate={
+                        isActive
+                          ? { x: rowIndex % 2 === 0 ? ['0%', '-50%'] : ['-50%', '0%'] }
+                          : { x: rowIndex % 2 === 0 ? '0%' : '-50%' }
+                      }
+                      transition={
+                        isActive
+                          ? { duration: 30 + rowIndex * 2, ease: 'linear', repeat: Infinity }
+                          : { duration: 0 }
+                      }
                     >
                       {row.items.map((project, index) => (
                         <article

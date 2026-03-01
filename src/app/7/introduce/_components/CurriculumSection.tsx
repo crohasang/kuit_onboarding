@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import curriculumJson from '@/app/7/introduce/_data/curriculum.json';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import FinalSection from './FinalSection';
+import IntroduceSection from './IntroduceSection';
 import PartLottieStrip from './PartLottieStrip';
 import ProjectsSection from './ProjectsSection';
 import StaffSection from './StaffSection';
@@ -16,12 +17,15 @@ const curriculumData = curriculumJson as CurriculumData;
 export default function CurriculumSection() {
   const [activePart, setActivePart] = useState<PartKey>('android');
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isProjectAnimating, setIsProjectAnimating] = useState(false);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const items = useMemo(() => curriculumData[activePart], [activePart]);
-  const totalSlides = 4;
+  const totalSlides = 5;
   const unifiedPanelSizeClass = 'h-full min-h-0';
+  const isSlideMounted = (index: number) => Math.abs(activeSlide - index) <= 1;
+  const shouldMountProjects = activeSlide === 2 || isProjectAnimating;
 
   const moveSlide = (direction: -1 | 1) => {
     const slider = sliderRef.current;
@@ -37,6 +41,13 @@ export default function CurriculumSection() {
   const handleScroll = () => {
     const slider = sliderRef.current;
     if (!slider) return;
+
+    const width = slider.clientWidth;
+    if (width > 0) {
+      const rawIndex = slider.scrollLeft / width;
+      const shouldAnimateProject = rawIndex > 1 && rawIndex < 3;
+      setIsProjectAnimating((prev) => (prev === shouldAnimateProject ? prev : shouldAnimateProject));
+    }
 
     if (scrollEndTimerRef.current) clearTimeout(scrollEndTimerRef.current);
     scrollEndTimerRef.current = setTimeout(() => {
@@ -66,28 +77,37 @@ export default function CurriculumSection() {
       >
         <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
           <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
-            <h2 className="text-[20px] font-bold tracking-[0.05em] text-white sm:text-[26px]">커리큘럼</h2>
-            <p className="mt-1 text-xs text-white/70 sm:text-sm">5개의 파트, 9주간의 스터디</p>
+            {isSlideMounted(0) ? <IntroduceSection /> : null}
+          </div>
+        </div>
+        <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
+          <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
+            {isSlideMounted(1) ? (
+              <>
+                <h2 className="text-[20px] font-bold tracking-[0.05em] text-white sm:text-[26px]">커리큘럼</h2>
+                <p className="mt-1 text-xs text-white/70 sm:text-sm">5개의 파트, 9주간의 스터디</p>
 
-            <div className="mt-4 sm:mt-5">
-              <PartLottieStrip activePart={activePart} onChange={setActivePart} />
-              <WeekTimeline items={items} />
-            </div>
+                <div className="mt-4 sm:mt-5">
+                  <PartLottieStrip activePart={activePart} onChange={setActivePart} />
+                  <WeekTimeline items={items} />
+                </div>
+              </>
+            ) : null}
           </div>
         </div>
         <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
           <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
-            <ProjectsSection />
+            {shouldMountProjects ? <ProjectsSection isActive={activeSlide === 2 || isProjectAnimating} /> : null}
           </div>
         </div>
         <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
           <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
-            <StaffSection />
+            {activeSlide === 3 ? <StaffSection /> : null}
           </div>
         </div>
         <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
           <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
-            <FinalSection />
+            {activeSlide === 4 ? <FinalSection isActive={activeSlide === 4} /> : null}
           </div>
         </div>
       </div>

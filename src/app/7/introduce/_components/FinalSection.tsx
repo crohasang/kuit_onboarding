@@ -27,16 +27,21 @@ function pad(value: number) {
   return String(value).padStart(2, '0');
 }
 
-export default function FinalSection() {
+type FinalSectionProps = {
+  isActive?: boolean;
+};
+
+export default function FinalSection({ isActive = true }: FinalSectionProps) {
   const [countdown, setCountdown] = useState<Countdown>(() => getCountdown());
 
   useEffect(() => {
+    if (!isActive) return;
     const timer = window.setInterval(() => {
       setCountdown(getCountdown());
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [isActive]);
 
   const countdownText = useMemo(() => {
     return `${pad(countdown.days)}:${pad(countdown.hours)}:${pad(countdown.minutes)}:${pad(countdown.seconds)}`;
