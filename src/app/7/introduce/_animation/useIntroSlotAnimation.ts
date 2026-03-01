@@ -6,9 +6,9 @@ import gsap from 'gsap';
 import { REEL_DIGITS } from './slot.constants';
 
 type IntroSlotAnimationArgs = {
-  containerRef: RefObject<HTMLDivElement | null>;
-  slotStageRef: RefObject<HTMLDivElement | null>;
-  curriculumRef: RefObject<HTMLDivElement | null>;
+  containerRef: RefObject<HTMLDivElement>;
+  slotStageRef: RefObject<HTMLDivElement>;
+  curriculumRef: RefObject<HTMLDivElement>;
   reelRefs: MutableRefObject<HTMLDivElement[]>;
 };
 

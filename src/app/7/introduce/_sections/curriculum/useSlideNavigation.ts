@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 type SlideNavigation = {
-  sliderRef: React.RefObject<HTMLDivElement | null>;
+  sliderRef: React.RefObject<HTMLDivElement>;
   activeSlide: number;
   isProjectAnimating: boolean;
   moveSlide: (direction: -1 | 1) => void;
@@ -71,4 +71,3 @@ export default function useSlideNavigation(totalSlides: number): SlideNavigation
     shouldMountProjects,
   };
 }
-
