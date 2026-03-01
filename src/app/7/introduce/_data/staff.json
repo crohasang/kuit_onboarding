@@ -1,0 +1,163 @@
+[
+  {
+    "part": "management",
+    "name": "김지현",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/kim-jihyun.jpeg",
+    "comment": "7기 회장 김지현입니다. 쿠잇과 함께 즐거운 한 학기 보내요 ~",
+    "role": "회장"
+  },
+  {
+    "part": "management",
+    "name": "박성현",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/park-seonghyun.jpeg",
+    "comment": "안녕하세요, 이번 7기 부회장 박성현입니다! 많이많이 배워가시길 바라고, 잘 부탁드려요!",
+    "role": "부회장"
+  },
+  {
+    "part": "management",
+    "name": "정윤아",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/jeong-yuna.jpeg",
+    "comment": "7기 부회장·서버파트장을 맡게 된 정윤아입니다. 함께 성장하는 한 학기가 되길 바라요!",
+    "role": "부회장"
+  },
+  {
+    "part": "management",
+    "name": "최승연",
+    "image": "",
+    "comment": "안녕하세요! 7기 총무 최승연입니다🙂 쿠잇과 함께 많은 경험을 쌓을 수 있길 바래요. 화이팅!",
+    "role": "총무"
+  },
+  {
+    "part": "management",
+    "name": "김재훈",
+    "image": "",
+    "comment": "안녕하세요 KUIT 7기 창업자문위원 김재훈입니다! 모두의 창업시대 여러분도 프로젝트에 그치지않고 창업에 도전해보시는 한해가 되었으면 좋겠습니다. KUIT 7기 파이팅!!",
+    "role": "창업자문위원"
+  },
+  {
+    "part": "management",
+    "name": "이지유",
+    "image": "",
+    "comment": "안녕하세요, KUIT 7기 운영 전반을 맡은 이지유입니다. 7기 분들과 좋은 추억 많이 쌓아가고 싶습니다. 파이팅💪",
+    "role": "운영자문위원"
+  },
+  {
+    "part": "android",
+    "name": "사예원",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/sa-yewon.jpeg",
+    "comment": "KUIT 7기 안드로이드 파트장 사예원입니다! 한 학기 동안 잘 부탁드립니다! 파이팅~~",
+    "role": "안드로이드 파트장"
+  },
+  {
+    "part": "android",
+    "name": "이준혁",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/lee-junhyeok.jpeg",
+    "comment": "",
+    "role": "안드로이드 파트장"
+  },
+  {
+    "part": "android",
+    "name": "이성준",
+    "image": "",
+    "comment": "",
+    "role": "안드로이드 파트장"
+  },
+  {
+    "part": "web",
+    "name": "박태희",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/park-taehee.jpeg",
+    "comment": "안녕하세요! 쿠잇 7기 웹 파트장 박태희 입니다. 쿠잇 7기를 기대하며 앞으로 한 학기동안 잘 부탁드립니다!",
+    "role": "웹 파트장"
+  },
+  {
+    "part": "web",
+    "name": "최준서",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/choi-junseo.jpeg",
+    "comment": "KUIT 7기 Web 파트장 최준서입니다! 이번학기도 많이 얻어가시면 좋겠습니다!",
+    "role": "웹 파트장"
+  },
+  {
+    "part": "web",
+    "name": "김별찬",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/kim-byeolchan.jpeg",
+    "comment": "안녕하세요, 7기 웹 파트장 김별찬입니다. 이번 학기 많은 것들 얻어가실 수 있으면 좋겠습니다. 7기 파이팅!",
+    "role": "웹 파트장"
+  },
+  {
+    "part": "web",
+    "name": "김희용",
+    "image": "",
+    "comment": "안녕하세요, 7기 웹 파트장 김희용입니다. 한학기동안 함께 성장해나가면 좋겠습니다~",
+    "role": "웹 파트장"
+  },
+  {
+    "part": "server",
+    "name": "정윤아",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/jeong-yuna.jpeg",
+    "comment": "7기 부회장·서버파트장을 맡게 된 정윤아입니다. 함께 성장하는 한 학기가 되길 바라요!",
+    "role": "서버 파트장"
+  },
+  {
+    "part": "server",
+    "name": "양지윤",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/yang-jiyun.jpeg",
+    "comment": "안녕하세요! 7기 서버 파트장 양지윤입니다. 한 학기 동안 잘부탁드립니다!",
+    "role": "서버 파트장"
+  },
+  {
+    "part": "server",
+    "name": "강희진",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/kang-heejin.jpeg",
+    "comment": "안녕하세요, KUIT 7기 서버 파트장 강희진입니다. 한 학기 동안 잘 부탁드립니다 🫶",
+    "role": "서버 파트장"
+  },
+  {
+    "part": "server",
+    "name": "이윤희",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/lee-yunhee.webp",
+    "comment": "7기 서버 파트장 이윤희입니다! 한 학기 같이 열심히 해서 많이 얻어갈 수 있는 시간이 되길 바래요! 화이팅 😆",
+    "role": "서버 파트장"
+  },
+  {
+    "part": "server",
+    "name": "김민우",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/kim-minwoo.png",
+    "comment": "7기 서버 파트장 김민우입니다! 쿠잇 파이팅!",
+    "role": "서버 파트장"
+  },
+  {
+    "part": "pm",
+    "name": "곽지현",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/kwak-jihyeon.jpeg",
+    "comment": "",
+    "role": "PM 파트장"
+  },
+  {
+    "part": "pm",
+    "name": "구준모",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/ku-junmo.jpeg",
+    "comment": "안녕하세요 KUIT 7기 PM 파트장 구준모입니다! 한 학기 동안 모두 화이팅해봅시다~!",
+    "role": "PM 파트장"
+  },
+  {
+    "part": "pm",
+    "name": "전건호",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/jeon-geonho.jpeg",
+    "comment": "",
+    "role": "PM 파트장"
+  },
+  {
+    "part": "design",
+    "name": "윤희수",
+    "image": "https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/yun-heesoo.jpeg",
+    "comment": "KUIT 7기 디자인 파트장 윤희수입니다. 앞으로 잘 부탁드리고, 한 학기 동안 다들 열심히 해봅시다 화이팅!! ✊✊",
+    "role": "디자인 파트장"
+  },
+  {
+    "part": "design",
+    "name": "김다솜",
+    "image": "",
+    "comment": "",
+    "role": "디자인 파트장"
+  }
+]

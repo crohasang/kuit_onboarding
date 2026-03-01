@@ -1,0 +1,17 @@
+<svg width="640" height="800" viewBox="0 0 640 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="560" y2="740" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#545B66"/>
+      <stop offset="1" stop-color="#3E444D"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="800" rx="28" fill="url(#bg)"/>
+
+  <path
+    d="M0 800V620C0 500 138 360 320 360C502 360 640 500 640 620V800H0ZM320 320C390.692 320 448 262.692 448 192C448 121.308 390.692 64 320 64C249.308 64 192 121.308 192 192C192 262.692 249.308 320 320 320Z"
+    fill="#A7ADB5"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+  />
+</svg>
