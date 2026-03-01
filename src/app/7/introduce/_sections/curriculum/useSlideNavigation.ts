@@ -10,16 +10,21 @@ type SlideNavigation = {
   handleScroll: () => void;
   isSlideMounted: (index: number) => boolean;
   shouldMountProjects: boolean;
+  shouldMountStaff: boolean;
 };
 
 export default function useSlideNavigation(totalSlides: number): SlideNavigation {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isProjectAnimating, setIsProjectAnimating] = useState(false);
-  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [visitedSlides, setVisitedSlides] = useState<boolean[]>(() =>
+    Array.from({ length: totalSlides }, (_, index) => index === 0),
+  );
+  const sliderRef = useRef<HTMLDivElement>(null);
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isSlideMounted = (index: number) => Math.abs(activeSlide - index) <= 1;
   const shouldMountProjects = activeSlide === 2 || isProjectAnimating;
+  const shouldMountStaff = visitedSlides[3] || activeSlide === 3;
 
   const moveSlide = (direction: -1 | 1) => {
     const slider = sliderRef.current;
@@ -56,6 +61,15 @@ export default function useSlideNavigation(totalSlides: number): SlideNavigation
   };
 
   useEffect(() => {
+    setVisitedSlides((prev) => {
+      if (prev[activeSlide]) return prev;
+      const next = [...prev];
+      next[activeSlide] = true;
+      return next;
+    });
+  }, [activeSlide]);
+
+  useEffect(() => {
     return () => {
       if (scrollEndTimerRef.current) clearTimeout(scrollEndTimerRef.current);
     };
@@ -69,5 +83,6 @@ export default function useSlideNavigation(totalSlides: number): SlideNavigation
     handleScroll,
     isSlideMounted,
     shouldMountProjects,
+    shouldMountStaff,
   };
 }

@@ -30,8 +30,16 @@ export default function CurriculumSection() {
 
   const items = useMemo(() => curriculumData[activePart], [activePart]);
   const totalSlides = 5;
-  const { sliderRef, activeSlide, isProjectAnimating, moveSlide, handleScroll, isSlideMounted, shouldMountProjects } =
-    useSlideNavigation(totalSlides);
+  const {
+    sliderRef,
+    activeSlide,
+    isProjectAnimating,
+    moveSlide,
+    handleScroll,
+    isSlideMounted,
+    shouldMountProjects,
+    shouldMountStaff,
+  } = useSlideNavigation(totalSlides);
 
   return (
     <section className={`h-screen w-screen px-2 pb-16 pt-2 sm:px-4 sm:pb-20 sm:pt-4 ${styles.sectionBg}`}>
@@ -59,7 +67,7 @@ export default function CurriculumSection() {
 
         <SlidePanel>{shouldMountProjects ? <ProjectsSection isActive={activeSlide === 2 || isProjectAnimating} /> : null}</SlidePanel>
 
-        <SlidePanel>{isSlideMounted(3) ? <StaffSection isActive={activeSlide === 3} /> : null}</SlidePanel>
+        <SlidePanel>{shouldMountStaff ? <StaffSection isActive={shouldMountStaff} /> : null}</SlidePanel>
 
         <SlidePanel>{activeSlide === 4 ? <FinalSection isActive={activeSlide === 4} /> : null}</SlidePanel>
       </div>
