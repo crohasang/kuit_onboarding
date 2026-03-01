@@ -11,7 +11,7 @@ type BottomNavigatorProps = {
 
 export default function BottomNavigator({ activeSlide, totalSlides, onPrev, onNext }: BottomNavigatorProps) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[140]">
+    <div className="fixed inset-x-0 bottom-0 z-[140] pb-[env(safe-area-inset-bottom)]">
       <div className="flex w-full items-center justify-center gap-3 border-t border-white/10 bg-black/35 px-4 py-2 backdrop-blur-md sm:px-6 sm:py-3">
         <button
           type="button"
@@ -40,4 +40,3 @@ export default function BottomNavigator({ activeSlide, totalSlides, onPrev, onNe
     </div>
   );
 }
-

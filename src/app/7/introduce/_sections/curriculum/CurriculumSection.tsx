@@ -42,12 +42,14 @@ export default function CurriculumSection() {
   } = useSlideNavigation(totalSlides);
 
   return (
-    <section className={`h-screen w-screen px-2 pb-16 pt-2 sm:px-4 sm:pb-20 sm:pt-4 ${styles.sectionBg}`}>
+    <section
+      className={`h-[100dvh] w-screen px-2 pb-[calc(64px+env(safe-area-inset-bottom))] pt-2 sm:h-screen sm:px-4 sm:pb-20 sm:pt-4 ${styles.sectionBg}`}
+    >
       <div className={styles.noiseLayer} />
       <div
         ref={sliderRef}
         onScroll={handleScroll}
-        className="relative z-10 flex h-[calc(100vh-72px)] items-stretch snap-x snap-mandatory overflow-x-auto scroll-smooth sm:h-[calc(100vh-92px)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="relative z-10 flex h-[calc(100dvh-74px-env(safe-area-inset-bottom))] items-stretch snap-x snap-mandatory overflow-x-auto scroll-smooth sm:h-[calc(100vh-92px)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         <SlidePanel>{isSlideMounted(0) ? <IntroduceSection /> : null}</SlidePanel>
 
