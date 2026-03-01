@@ -3,7 +3,7 @@
 import { DotLottiePlayer as Player } from '@dotlottie/react-player';
 import '@dotlottie/react-player/dist/index.css';
 import { PartKey } from './curriculum.types';
-import styles from './CurriculumGlass.module.css';
+import styles from '@/app/7/introduce/_layout/CurriculumGlass.module.css';
 
 const LOTTIE_BY_PART: Record<PartKey, string> = {
   web: '/lottie/seventh-introduce/web.lottie',

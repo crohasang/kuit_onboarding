@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import BodyClassManager from './_components/BodyClassManager';
-import IntroduceAnimationContainer from './_components/IntroduceAnimationContainer';
+import { IntroduceAnimationContainer } from './_animation';
+import { BodyClassManager } from './_layout';
 
 export const metadata: Metadata = {
   title: 'KUIT 7th Landing Page',
