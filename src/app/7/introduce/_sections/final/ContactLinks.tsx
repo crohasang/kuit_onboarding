@@ -2,8 +2,7 @@
 
 export default function ContactLinks() {
   return (
-    <div className="mt-5 space-y-1.5 text-[12px] text-white/85 sm:text-[13px]">
-      <p className="font-semibold text-white">✅ 문의 사항</p>
+    <div className="mx-auto mt-5 w-fit max-w-full space-y-1.5 text-left text-[12px] text-white/85 sm:text-[13px]">
       <p>
         ✔️ 카카오톡 플러스 친구 :
         <a className="ml-1 text-[#9ed7ff] underline-offset-2 hover:underline" href="http://pf.kakao.com/_Dxbgvxj" target="_blank" rel="noreferrer">
@@ -19,4 +18,3 @@ export default function ContactLinks() {
     </div>
   );
 }
-
