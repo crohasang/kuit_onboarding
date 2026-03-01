@@ -1,19 +1,29 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
 import curriculumJson from '@/app/7/introduce/_data/curriculum.json';
 import { BottomNavigator, SlidePanel } from '@/app/7/introduce/_layout';
 import { FinalSection } from '../final';
 import { IntroduceSection } from '../introduce';
-import PartLottieStrip from './PartLottieStrip';
-import { ProjectsSection } from '../projects';
-import { StaffSection } from '../staff';
 import WeekTimeline from './WeekTimeline';
 import { CurriculumData, PartKey } from './curriculum.types';
 import useSlideNavigation from './useSlideNavigation';
 import styles from '@/app/7/introduce/_layout/CurriculumGlass.module.css';
 
 const curriculumData = curriculumJson as CurriculumData;
+const PartLottieStrip = dynamic(() => import('./PartLottieStrip'), {
+  ssr: false,
+  loading: () => <div className="mt-1 h-[72px] rounded-md border border-white/15 bg-black/20" />,
+});
+const ProjectsSection = dynamic(() => import('../projects').then((m) => m.ProjectsSection), {
+  ssr: false,
+  loading: () => <div className="h-full min-h-[220px] rounded-md border border-white/15 bg-black/20" />,
+});
+const StaffSection = dynamic(() => import('../staff').then((m) => m.StaffSection), {
+  ssr: false,
+  loading: () => <div className="h-full min-h-[220px] rounded-md border border-white/15 bg-black/20" />,
+});
 
 export default function CurriculumSection() {
   const [activePart, setActivePart] = useState<PartKey>('android');

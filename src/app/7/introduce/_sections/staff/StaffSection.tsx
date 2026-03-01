@@ -1,8 +1,8 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useState } from 'react';
 import staffJson from '@/app/7/introduce/_data/staff.json';
-import StaffCard from './StaffCard';
 import StaffSkeletonGrid from './StaffSkeletonGrid';
 import StaffSectionTemplate from './StaffSectionTemplate';
 import { StaffItem, StaffPart, StaffTab } from './staff.types';
@@ -17,6 +17,12 @@ const TABS: StaffTab[] = [
 ];
 
 const staffData = staffJson as StaffItem[];
+const StaffCard = dynamic(() => import('./StaffCard'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[220px] w-[48%] min-w-[150px] max-w-[180px] animate-pulse rounded-lg border border-white/18 bg-gradient-to-br from-[#4f5560] via-[#626a76] to-[#4f5560] sm:w-[170px]" />
+  ),
+});
 
 function toCardId(item: StaffItem, index: number) {
   return `${item.part}:${item.name}:${index}`;

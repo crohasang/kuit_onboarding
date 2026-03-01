@@ -1,9 +1,13 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useRef } from 'react';
-import { CurriculumSection } from '../_sections/curriculum';
 import SlotReels from './SlotReels';
 import useIntroSlotAnimation from './useIntroSlotAnimation';
+
+const CurriculumSection = dynamic(() => import('../_sections/curriculum').then((m) => m.CurriculumSection), {
+  ssr: false,
+});
 
 export default function IntroduceAnimationContainer() {
   const containerRef = useRef<HTMLDivElement | null>(null);
