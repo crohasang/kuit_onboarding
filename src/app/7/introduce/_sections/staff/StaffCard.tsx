@@ -1,6 +1,8 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
+import StaffCardSkeleton from './StaffCardSkeleton';
 import { StaffItem } from './staff.types';
 
 const STAFF_PLACEHOLDER_SRC = '/images/seventh-staff-placeholder.svg';
@@ -10,24 +12,23 @@ type StaffCardProps = {
   item: StaffItem;
   isFlipped: boolean;
   isLoaded: boolean;
-  onToggle: () => void;
-  onLoad: () => void;
+  onToggle: (id: string) => void;
+  onLoad: (id: string) => void;
 };
 
-export default function StaffCard({ id, item, isFlipped, isLoaded, onToggle, onLoad }: StaffCardProps) {
+function StaffCard({ id, item, isFlipped, isLoaded, onToggle, onLoad }: StaffCardProps) {
   return (
     <button
-      key={id}
       type="button"
-      onClick={onToggle}
-      className="h-[220px] w-[48%] min-w-[150px] max-w-[180px] cursor-pointer [perspective:1000px] sm:w-[170px]"
+      onClick={() => onToggle(id)}
+      className="h-[200px] w-[48%] min-w-[150px] max-w-[180px] cursor-pointer [perspective:1000px] sm:h-[220px] sm:w-[170px]"
     >
       <div
-        className="relative h-full w-full rounded-lg transition-transform duration-500 [transform-style:preserve-3d]"
+        className="relative h-full w-full rounded-lg transition-transform duration-500 [transform:translateZ(0)] [transform-style:preserve-3d] [will-change:transform]"
         style={{ transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
       >
-        <div className="absolute inset-0 overflow-hidden rounded-lg border border-white/20 bg-[#2f343b] [backface-visibility:hidden]">
-          {!isLoaded ? <div className="absolute inset-0 z-[1] animate-pulse bg-gradient-to-br from-[#4f5560] via-[#626a76] to-[#4f5560]" /> : null}
+        <div className="absolute inset-0 overflow-hidden rounded-lg border border-white/20 bg-[#2f343b] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
+          {!isLoaded ? <StaffCardSkeleton absolute className="border-0 rounded-none" /> : null}
           <Image
             src={item.image || STAFF_PLACEHOLDER_SRC}
             alt={item.name}
@@ -35,8 +36,8 @@ export default function StaffCard({ id, item, isFlipped, isLoaded, onToggle, onL
             loading="lazy"
             sizes="(max-width: 640px) 48vw, 170px"
             className={item.image ? 'object-cover object-top' : 'object-cover object-center'}
-            onLoadingComplete={onLoad}
-            onError={onLoad}
+            onLoadingComplete={() => onLoad(id)}
+            onError={() => onLoad(id)}
           />
           <div className="absolute inset-x-0 bottom-0 bg-black/60 px-2.5 py-2 text-left">
             <div className="flex items-end justify-between gap-2">
@@ -46,7 +47,7 @@ export default function StaffCard({ id, item, isFlipped, isLoaded, onToggle, onL
           </div>
         </div>
 
-        <div className="absolute inset-0 rounded-lg border border-[#45cc63]/35 bg-[#0b1118] px-3 py-3 text-left [backface-visibility:hidden] [transform:rotateY(180deg)] sm:px-3.5 sm:py-3.5">
+        <div className="absolute inset-0 rounded-lg border border-[#45cc63]/35 bg-[#0b1118] px-3 py-3 text-left [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)] sm:px-3.5 sm:py-3.5">
           <p className="text-[12px] font-semibold text-[#45cc63] sm:text-[13px]">{item.name}</p>
           <p className="mt-2 line-clamp-8 text-[12px] leading-relaxed text-white/85 sm:text-[13px]">{item.comment || '잘 부탁드립니다!'}</p>
         </div>
@@ -55,3 +56,4 @@ export default function StaffCard({ id, item, isFlipped, isLoaded, onToggle, onL
   );
 }
 
+export default memo(StaffCard);

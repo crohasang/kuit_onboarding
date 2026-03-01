@@ -1,8 +1,9 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import staffJson from '@/app/7/introduce/_data/staff.json';
+import StaffCardSkeleton from './StaffCardSkeleton';
 import StaffSkeletonGrid from './StaffSkeletonGrid';
 import StaffSectionTemplate from './StaffSectionTemplate';
 import { StaffItem, StaffPart, StaffTab } from './staff.types';
@@ -19,9 +20,7 @@ const TABS: StaffTab[] = [
 const staffData = staffJson as StaffItem[];
 const StaffCard = dynamic(() => import('./StaffCard'), {
   ssr: false,
-  loading: () => (
-    <div className="h-[220px] w-[48%] min-w-[150px] max-w-[180px] animate-pulse rounded-lg border border-white/18 bg-gradient-to-br from-[#4f5560] via-[#626a76] to-[#4f5560] sm:w-[170px]" />
-  ),
+  loading: () => <StaffCardSkeleton />,
 });
 
 function toCardId(item: StaffItem, index: number) {
@@ -40,15 +39,23 @@ export default function StaffSection({ isActive = true }: StaffSectionProps) {
   const filteredStaff = useMemo(() => {
     return staffData.filter((item) => item.part === activeTab);
   }, [activeTab]);
+  const skeletonCount = Math.max(filteredStaff.length, 1);
 
   useEffect(() => {
     setFlippedMap({});
     setLoadedMap({});
   }, [activeTab]);
 
-  const toggleFlip = (id: string) => {
+  const toggleFlip = useCallback((id: string) => {
     setFlippedMap((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  }, []);
+
+  const markLoaded = useCallback((id: string) => {
+    setLoadedMap((prev) => {
+      if (prev[id]) return prev;
+      return { ...prev, [id]: true };
+    });
+  }, []);
 
   return (
     <StaffSectionTemplate
@@ -57,7 +64,7 @@ export default function StaffSection({ isActive = true }: StaffSectionProps) {
       onChangeTab={setActiveTab}
     >
       {!isActive ? (
-        <StaffSkeletonGrid />
+        <StaffSkeletonGrid count={skeletonCount} />
       ) : filteredStaff.length > 0 ? (
         <div className="flex flex-wrap gap-1.5 sm:gap-2">
           {filteredStaff.map((item, index) => {
@@ -72,13 +79,8 @@ export default function StaffSection({ isActive = true }: StaffSectionProps) {
                 item={item}
                 isFlipped={isFlipped}
                 isLoaded={isLoaded}
-                onToggle={() => toggleFlip(id)}
-                onLoad={() =>
-                  setLoadedMap((prev) => {
-                    if (prev[id]) return prev;
-                    return { ...prev, [id]: true };
-                  })
-                }
+                onToggle={toggleFlip}
+                onLoad={markLoaded}
               />
             );
           })}
