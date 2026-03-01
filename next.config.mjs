@@ -12,6 +12,12 @@ const nextConfig = {
           protocol: 'https',
           hostname: 'd1vuw798i1lfdr.cloudfront.net',
           port: '',
+          pathname: '/sixth-hackathon/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'd1vuw798i1lfdr.cloudfront.net',
+          port: '',
           pathname: '/seventh-introduce/**',
         },
       ],
@@ -20,7 +26,7 @@ const nextConfig = {
       return [
         {
           source: '/lottie/seventh-introduce/:path*',
-          destination: 'https://d1vuw798i1lfdr.cloudfront.net/sixth-introduce/:path*',
+          destination: 'https://d1vuw798i1lfdr.cloudfront.net/seventh-introduce/:path*',
         },
         {
           source: '/lottie/:path*',

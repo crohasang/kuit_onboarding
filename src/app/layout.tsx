@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import ClientLayout from '@/components/common/ClientLayout';
+import Script from 'next/script';
 
 import { usePathname } from 'next/navigation';
 
@@ -31,6 +32,7 @@ export default function RootLayout({
   const isSixthIntroducePage = pathname === '/6/introduce';
   const isSeventhIntroducePage = pathname === '/7/introduce';
   const isImmersiveIntroducePage = isSixthIntroducePage || isSeventhIntroducePage;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
@@ -43,6 +45,23 @@ export default function RootLayout({
           : ''
         }`}
       >
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${gaId}');
+          `}
+            </Script>
+          </>
+        )}
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
