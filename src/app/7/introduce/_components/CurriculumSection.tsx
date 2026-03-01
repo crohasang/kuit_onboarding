@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import curriculumJson from '@/app/7/introduce/_data/curriculum.json';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import FinalSection from './FinalSection';
 import PartLottieStrip from './PartLottieStrip';
 import ProjectsSection from './ProjectsSection';
 import StaffSection from './StaffSection';
@@ -19,7 +20,7 @@ export default function CurriculumSection() {
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const items = useMemo(() => curriculumData[activePart], [activePart]);
-  const totalSlides = 3;
+  const totalSlides = 4;
   const unifiedPanelSizeClass = 'h-full min-h-0';
 
   const moveSlide = (direction: -1 | 1) => {
@@ -82,6 +83,11 @@ export default function CurriculumSection() {
         <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
           <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
             <StaffSection />
+          </div>
+        </div>
+        <div className={`flex w-full shrink-0 snap-start ${unifiedPanelSizeClass}`}>
+          <div className={`h-full w-full p-4 sm:p-6 ${styles.glassPanel}`}>
+            <FinalSection />
           </div>
         </div>
       </div>
